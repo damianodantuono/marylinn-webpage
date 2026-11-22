@@ -3,9 +3,9 @@
     "name": "MAR STUDIO",
     "displayName": "MAR STUDIO by Marylin",
     "owner": "Marylin Casà",
-    "descriptor": "10 anni di esperienza nel settore. trattadermopigmentazione. ",
+    "descriptor": "Con 10 anni di esperienza nel settore offro trattamenti specializzati di dermopigmentazione, laminazione e needling a Imola.",
     "tagline": "La bellezza di sentirti te stessa.",
-    "description": "Trattamenti di dermopigmentazione, cura dello sguardo e percorsi beauty personalizzati da MAR STUDIO by Marylin Casà.\n\nSono a imola"
+    "description": "Dermopigmentazione ( trucco permanente, tatuaggio sopracciglia, labbra, occhi) , laminazione, needling e gemme dentali a Imola da Mar studio by Marylin: 10 anni di esperienza."
   },
   "contact": {
     "whatsappNumber": "+393473726750",
@@ -40,16 +40,12 @@
       "href": "/trattamenti"
     },
     {
+      "label": "Regala un trattamento ",
+      "href": "/shop-gift-card"
+    },
+    {
       "label": "Academy",
       "href": "/corsi"
-    },
-    {
-      "label": "Prima e dopo",
-      "href": "/prima-e-dopo"
-    },
-    {
-      "label": "Sieri & Gift Card",
-      "href": "/shop-gift-card"
     },
     {
       "label": "Contatti",

@@ -5,24 +5,12 @@
     "owner": "Marylin Casà",
     "descriptor": "Estetica, dermopigmentazione e formazione",
     "tagline": "La bellezza di sentirti te stessa.",
-    "description": "Trattamenti di dermopigmentazione, cura dello sguardo e percorsi beauty personalizzati da MAR STUDIO by Marylin Casà."
+    "description": "Trattamenti di dermopigmentazione, cura dello sguardo e percorsi beauty personalizzati da MAR STUDIO by Marylin Casà.\n\nSono a imola"
   },
   "contact": {
-    "whatsappNumber": "",
-    "phoneDisplay": "",
-    "email": "",
-    "address": {
-      "street": "",
-      "postalCode": "",
-      "locality": "",
-      "province": ""
-    },
-    "openingHours": "Orari e disponibilità vengono concordati al momento della prenotazione.",
-    "web3FormsAccessKey": ""
+    "openingHours": "Orari e disponibilità vengono concordati al momento della prenotazione."
   },
   "social": {
-    "instagramUrl": "",
-    "instagramHandle": "",
     "mapsSearchUrl": "https://www.google.com/maps/search/?api=1&query=MAR+STUDIO+Marylin+Casa",
     "mapsEmbedUrl": "https://maps.google.com/maps?q=MAR%20STUDIO%20Marylin%20Casa&output=embed"
   },
@@ -63,13 +51,11 @@
     "primaryAction": "Prenota una consulenza",
     "secondaryAction": "Scopri i trattamenti",
     "imageAlt": "Spazio dedicato ai trattamenti beauty di MAR STUDIO",
-    "imageLabel": "Il tuo momento, la tua bellezza",
-    "image": ""
+    "imageLabel": "Il tuo momento, la tua bellezza"
   },
   "about": {
     "eyebrow": "Piacere, sono Marylin",
     "title": "La cura dei dettagli, con sensibilità e ascolto.",
-    "image": "",
     "paragraphs": [
       "MAR STUDIO nasce dal desiderio di creare uno spazio accogliente, in cui ogni persona possa sentirsi ascoltata e accompagnata nella scelta del trattamento più adatto.",
       "Credo in una bellezza personale, mai standardizzata. Per questo ogni percorso inizia dal dialogo: valutiamo insieme desideri, caratteristiche e aspettative, con attenzione alla naturalezza e alla cura.",
@@ -79,22 +65,17 @@
   "stats": [
     {
       "label": "Anni di esperienza",
-      "value": null,
       "suffix": "+"
     },
     {
       "label": "Trattamenti eseguiti",
-      "value": null,
       "suffix": "+"
     },
     {
-      "label": "Riconoscimenti",
-      "value": null,
-      "suffix": ""
+      "label": "Riconoscimenti"
     },
     {
       "label": "Allieve formate",
-      "value": null,
       "suffix": "+"
     }
   ],
@@ -125,7 +106,6 @@
   ],
   "media": {
     "studioVideo": {
-      "src": "",
       "poster": "/images/placeholders/studio-poster.svg",
       "alt": "Anteprima illustrata del video di presentazione dello studio"
     }

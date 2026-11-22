@@ -5,6 +5,7 @@
   "format": "photo",
   "title": "Laminazione",
   "description": "Immagini dei risultati da aggiungere con il consenso delle clienti.",
+  "beforeSrc": "/images/uploads/demo.png",
   "afterSrc": "/images/uploads/6a3fd4734ecd4209a39a9ca7dopo-sopraciglia.webp",
   "alt": "Spazio per un risultato di laminazione prima e dopo"
 }

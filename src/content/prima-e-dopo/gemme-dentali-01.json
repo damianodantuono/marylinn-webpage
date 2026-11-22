@@ -1,11 +1,11 @@
 {
   "id": "gemme-dentali-01",
+  "order": 6,
   "category": "gemme-dentali",
   "format": "photo",
   "title": "Gemme dentali",
   "description": "Immagini del servizio da aggiungere con il consenso delle persone ritratte.",
-  "beforeSrc": "",
-  "afterSrc": "",
-  "alt": "Spazio per una fotografia del servizio gemme dentali",
-  "order": 6
+  "beforeSrc": "/images/uploads/demo.png",
+  "afterSrc": "/images/uploads/6a3fd4734ecd4209a39a9ca7dopo-sopraciglia.webp",
+  "alt": "Spazio per una fotografia del servizio gemme dentali"
 }

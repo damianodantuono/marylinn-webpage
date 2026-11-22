@@ -8,9 +8,20 @@
     "description": "Trattamenti di dermopigmentazione, cura dello sguardo e percorsi beauty personalizzati da MAR STUDIO by Marylin Casà.\n\nSono a imola"
   },
   "contact": {
+    "whatsappNumber": "+393473726750",
+    "phoneDisplay": "3473726750",
+    "email": "casamarylin7@gmail.com",
+    "address": {
+      "street": "Via Goffredo Zaccherini 32B",
+      "postalCode": "40026",
+      "locality": "Imola",
+      "province": "BO"
+    },
     "openingHours": "Orari e disponibilità vengono concordati al momento della prenotazione."
   },
   "social": {
+    "instagramUrl": "https://www.instagram.com/marylin.c/",
+    "instagramHandle": "marylin.c",
     "mapsSearchUrl": "https://www.google.com/maps/search/?api=1&query=MAR+STUDIO+Marylin+Casa",
     "mapsEmbedUrl": "https://maps.google.com/maps?q=MAR%20STUDIO%20Marylin%20Casa&output=embed"
   },

@@ -1,5 +1,6 @@
 {
-  "slug": "microblading",
+  "slug": "sopracciglia pelo a pelo",
+  "order": 2,
   "name": "Microblading",
   "navLabel": "Microblading",
   "shortDescription": "Una tecnica manuale per definire l'aspetto delle sopracciglia con un effetto delicato.",
@@ -25,7 +26,5 @@
     }
   ],
   "imageAlt": "Esempio illustrativo di trattamento sopracciglia",
-  "placeholderLabel": "Sopracciglia",
-  "order": 2,
-  "image": ""
+  "placeholderLabel": "Sopracciglia"
 }

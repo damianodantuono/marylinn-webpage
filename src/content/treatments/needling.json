@@ -5,10 +5,17 @@
   "shortDescription": "abc",
   "description": "abc",
   "duration": "durata e numero di sedute vengono definite durante la consulenza",
+  "benefits": [
+    "Percorso definito in base alle esigenze individuali durante la consulenza.",
+    "Indicazioni sul trattamento condivise prima dell'appuntamento.",
+    "Consigli per la cura successiva forniti al termine della seduta."
+  ],
   "faqs": [
     {
       "question": "abc ",
       "answer": "abc "
     }
-  ]
+  ],
+  "imageAlt": "Trattamento needling presso MAR STUDIO",
+  "placeholderLabel": "Needling"
 }

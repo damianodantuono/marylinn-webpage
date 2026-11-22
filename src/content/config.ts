@@ -41,19 +41,19 @@ const studio = defineCollection({
       secondaryAction: z.string(),
       imageAlt: z.string(),
       imageLabel: z.string(),
-      image: z.string(),
+      image: z.string().optional(),
     }),
     about: z.object({
       eyebrow: z.string(),
       title: z.string(),
-      image: z.string(),
+      image: z.string().optional(),
       paragraphs: z.array(z.string()),
     }),
     stats: z.array(
       z.object({
         label: z.string(),
         value: z.number().nullable().optional(),
-        suffix: z.string(),
+        suffix: z.string().optional(),
       }),
     ),
     giftCards: z.object({
@@ -69,7 +69,7 @@ const studio = defineCollection({
     ),
     media: z.object({
       studioVideo: z.object({
-        src: z.string(),
+        src: z.string().optional(),
         poster: z.string(),
         alt: z.string(),
       }),

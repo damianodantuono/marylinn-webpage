@@ -1,8 +1,9 @@
 {
-  "slug": "pmu",
-  "name": "Dermopigmentazione",
-  "navLabel": "PMU",
-  "shortDescription": "Sopracciglia, labbra e occhi valorizzati con un progetto studiato sui tuoi lineamenti.",
+  "slug": "pmusopracciglia",
+  "order": 1,
+  "name": "Dermopigmentazione Sopracciglia ",
+  "navLabel": "Sopracciglia Sfumate",
+  "shortDescription": "Tecnica di sfumatura alle sopracciglia.",
   "description": "La dermopigmentazione (PMU) deposita pigmenti negli strati superficiali della pelle per definire o armonizzare i tratti del viso. La consulenza preliminare è il momento per parlare del risultato desiderato, valutare la forma più adatta e chiarire ogni dubbio prima di decidere.",
   "duration": "Durata e numero di sedute vengono definiti durante la consulenza.",
   "benefits": [
@@ -25,7 +26,5 @@
     }
   ],
   "imageAlt": "Esempio illustrativo di dermopigmentazione",
-  "placeholderLabel": "Dermopigmentazione",
-  "order": 1,
-  "image": ""
+  "placeholderLabel": "Dermopigmentazione"
 }

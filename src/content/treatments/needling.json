@@ -1,0 +1,14 @@
+{
+  "slug": "needling",
+  "name": "needling",
+  "navLabel": "needling",
+  "shortDescription": "abc",
+  "description": "abc",
+  "duration": "durata e numero di sedute vengono definite durante la consulenza",
+  "faqs": [
+    {
+      "question": "abc ",
+      "answer": "abc "
+    }
+  ]
+}

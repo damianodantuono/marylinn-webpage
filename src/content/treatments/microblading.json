@@ -1,0 +1,31 @@
+{
+  "slug": "microblading",
+  "name": "Microblading",
+  "navLabel": "Microblading",
+  "shortDescription": "Una tecnica manuale per definire l'aspetto delle sopracciglia con un effetto delicato.",
+  "description": "Il microblading è una tecnica manuale di dermopigmentazione dedicata alle sopracciglia. Forma e intensità vengono valutate insieme, tenendo conto dei lineamenti, della pelle e dell'effetto che desideri ottenere. La fattibilità viene sempre verificata in consulenza.",
+  "duration": "Tempi e sedute dipendono dalla valutazione individuale.",
+  "benefits": [
+    "Studio della forma in armonia con i lineamenti.",
+    "Valutazione preliminare della pelle e delle aspettative.",
+    "Indicazioni di cura condivise prima e dopo la seduta."
+  ],
+  "faqs": [
+    {
+      "question": "Il microblading è adatto a ogni tipo di pelle?",
+      "answer": "Non sempre. La valutazione della pelle e delle abitudini è importante per capire se la tecnica è indicata o se è preferibile considerare un'alternativa."
+    },
+    {
+      "question": "Posso scegliere la forma delle sopracciglia?",
+      "answer": "La forma viene progettata insieme, partendo dai tuoi desideri e considerando le proporzioni del viso."
+    },
+    {
+      "question": "Il risultato è permanente?",
+      "answer": "È una tecnica semipermanente. Durata e resa variano da persona a persona e dipendono anche dalla pelle e dalla cura successiva."
+    }
+  ],
+  "imageAlt": "Esempio illustrativo di trattamento sopracciglia",
+  "placeholderLabel": "Sopracciglia",
+  "order": 2,
+  "image": ""
+}

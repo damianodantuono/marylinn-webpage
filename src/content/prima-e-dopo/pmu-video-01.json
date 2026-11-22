@@ -1,0 +1,11 @@
+{
+  "id": "pmu-video-01",
+  "category": "pmu",
+  "format": "video",
+  "title": "Un risultato in movimento",
+  "description": "Video dei risultati da aggiungere con il consenso della cliente.",
+  "videoSrc": "",
+  "poster": "/images/placeholders/studio-poster.svg",
+  "alt": "Spazio per un video di un risultato PMU",
+  "order": 7
+}

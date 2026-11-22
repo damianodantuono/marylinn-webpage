@@ -1,0 +1,31 @@
+{
+  "slug": "pmu",
+  "name": "Dermopigmentazione",
+  "navLabel": "PMU",
+  "shortDescription": "Sopracciglia, labbra e occhi valorizzati con un progetto studiato sui tuoi lineamenti.",
+  "description": "La dermopigmentazione (PMU) deposita pigmenti negli strati superficiali della pelle per definire o armonizzare i tratti del viso. La consulenza preliminare è il momento per parlare del risultato desiderato, valutare la forma più adatta e chiarire ogni dubbio prima di decidere.",
+  "duration": "Durata e numero di sedute vengono definiti durante la consulenza.",
+  "benefits": [
+    "Progetto personalizzato in base a viso, pelle e preferenze.",
+    "Possibilità di valorizzare sopracciglia, labbra o occhi.",
+    "Indicazioni di cura e mantenimento fornite dopo il trattamento."
+  ],
+  "faqs": [
+    {
+      "question": "Il risultato è uguale per tutte?",
+      "answer": "No. Pelle, lineamenti e abitudini personali influiscono sul risultato; la consulenza serve proprio a definire aspettative realistiche e un progetto su misura."
+    },
+    {
+      "question": "Quanto dura il trattamento?",
+      "answer": "Tempi e necessità di eventuali sedute successive variano in base alla zona e alla risposta individuale. Le informazioni vengono condivise prima di iniziare."
+    },
+    {
+      "question": "Come mi preparo all'appuntamento?",
+      "answer": "Riceverai indicazioni personalizzate prima della seduta. Segnala in consulenza eventuali condizioni della pelle, allergie o trattamenti in corso."
+    }
+  ],
+  "imageAlt": "Esempio illustrativo di dermopigmentazione",
+  "placeholderLabel": "Dermopigmentazione",
+  "order": 1,
+  "image": ""
+}

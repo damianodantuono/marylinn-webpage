@@ -1,0 +1,188 @@
+---
+import CtaConversionBlock from "@/components/CtaConversionBlock.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getGallery, getStudio, getTreatments } from "@/lib/content";
+
+export async function getStaticPaths() {
+  const treatments = await getTreatments();
+  return treatments.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const site = await getStudio();
+const relatedMedia = (await getGallery()).filter((item) => item.category === service.slug);
+const piercingLocation = [
+  site.contact.address.locality,
+  site.contact.address.province,
+].filter(Boolean).join(", ");
+const pageTitle = service.slug === "piercing"
+  ? `Piercing${piercingLocation ? ` a ${piercingLocation}` : " presso MAR STUDIO"}: informazioni e consulenza`
+  : `${service.name}: informazioni e consulenza`;
+const pageDescription = service.slug === "piercing"
+  ? `Cerchi un piercing${piercingLocation ? ` a ${piercingLocation}` : " presso MAR STUDIO"}? Contatta Marylin Casà per informazioni su disponibilità, indirizzo, consulenza e cura.`
+  : service.shortDescription;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  whatsappMessage={`Ciao Marylin, vorrei informazioni sul trattamento ${service.name}.`}
+>
+  <nav class="mx-auto max-w-7xl px-5 pt-6 text-xs text-[#76695F] sm:px-8" aria-label="Percorso di navigazione">
+    <a class="hover:text-[#8A684A]" href="/">Home</a>
+    <span class="mx-2" aria-hidden="true">/</span>
+    <a class="hover:text-[#8A684A]" href="/trattamenti">Trattamenti</a>
+    <span class="mx-2" aria-hidden="true">/</span>
+    <span aria-current="page">{service.navLabel}</span>
+  </nav>
+
+  <section class="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Trattamenti MAR STUDIO</p>
+      <h1 class="mt-4 font-display text-5xl leading-tight sm:text-6xl">
+        {service.slug === "piercing" ? `Piercing${piercingLocation ? ` a ${piercingLocation}` : " presso MAR STUDIO"}` : service.name}
+      </h1>
+      <p class="mt-5 max-w-2xl text-base leading-8 text-[#625850]">
+        {service.slug === "piercing"
+          ? "Ogni appuntamento per piercing inizia con una consulenza. Contatta MAR STUDIO by Marylin Casà per verificare disponibilità, indirizzo e informazioni sul servizio."
+          : service.shortDescription}
+      </p>
+      <a
+        class="mt-8 inline-flex rounded-full bg-[#1F1D1B] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#55463A]"
+        href="/contatti"
+      >
+        Prenota una consulenza
+      </a>
+    </div>
+    <div
+      class="relative flex min-h-[330px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#E6CDB8_0%,transparent_38%),linear-gradient(145deg,#D8C6B4_0%,#EEE3D7_48%,#B89778_100%)] p-7 sm:min-h-[420px] sm:p-10"
+      role="img"
+      aria-label={service.imageAlt}
+    >
+      {service.image ? (
+        <img class="absolute inset-0 h-full w-full object-cover" src={service.image} alt={service.imageAlt} />
+      ) : (
+        <p class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs text-[#51463E]">
+          Fotografia del trattamento in aggiornamento
+        </p>
+      )}
+    </div>
+  </section>
+
+  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="description-title">
+    <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr]">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Il trattamento</p>
+        <h2 id="description-title" class="mt-3 font-display text-4xl">Un progetto costruito insieme.</h2>
+        <p class="mt-5 text-sm leading-7 text-[#625850]">{service.description}</p>
+      </div>
+      <aside class="rounded-3xl bg-[#FAF8F5] p-6 sm:p-8">
+        <h2 class="font-display text-2xl">Durata e modalità</h2>
+        <p class="mt-3 text-sm leading-7 text-[#625850]">{service.duration}</p>
+        <p class="mt-4 text-xs leading-6 text-[#76695F]">
+          La valutazione è individuale. Prima di procedere, condividi eventuali allergie, condizioni cutanee o trattamenti in corso.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="benefits-title">
+    <div class="grid gap-10 md:grid-cols-2">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Il percorso</p>
+        <h2 id="benefits-title" class="mt-3 font-display text-4xl">Cosa aspettarti.</h2>
+        <ul class="mt-6 space-y-4">
+          {service.benefits.map((benefit) => (
+            <li class="flex gap-3 text-sm leading-6 text-[#625850]">
+              <span class="mt-0.5 text-[#9A744E]" aria-hidden="true">✦</span>
+              <span>{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-3xl bg-[#F2ECE4] p-6 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Prima di prenotare</p>
+        <h2 class="mt-3 font-display text-3xl">La consulenza è il primo passo.</h2>
+        <p class="mt-4 text-sm leading-7 text-[#625850]">
+          Parleremo del risultato che desideri, delle caratteristiche individuali e di ogni indicazione utile per decidere con serenità.
+        </p>
+        <a class="mt-6 inline-flex text-sm font-semibold underline decoration-[#B89778] underline-offset-4" href="/contatti">
+          Scrivici per informazioni <span class="ml-2" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="gallery-title">
+    <div class="mx-auto max-w-7xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Galleria</p>
+      <h2 id="gallery-title" class="mt-3 font-display text-4xl">Dettagli da scoprire.</h2>
+      <p class="mt-4 max-w-2xl text-sm leading-7 text-[#625850]">
+        Le immagini originali saranno pubblicate dopo la selezione dei materiali e con il consenso delle persone ritratte.
+      </p>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {relatedMedia.length > 0 ? relatedMedia.map((item, index) => (
+          <div class="overflow-hidden rounded-3xl bg-[#FAF8F5]">
+            <div
+              class:list={[
+                "relative flex aspect-[1.2] items-end overflow-hidden p-5",
+                index % 2 === 0
+                  ? "bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)]"
+                  : "bg-[linear-gradient(145deg,#E8E2D9,#B6A89A)]",
+              ]}
+              role="img"
+              aria-label={item.alt}
+            >
+              {item.format === "photo" && item.afterSrc ? (
+                <img class="absolute inset-0 h-full w-full object-cover" src={item.afterSrc} alt={`${item.alt} — dopo`} loading="lazy" />
+              ) : item.format === "video" && item.videoSrc ? (
+                <video class="absolute inset-0 h-full w-full object-cover" controls playsinline preload="none" poster={item.poster} aria-label={item.alt}>
+                  <source src={item.videoSrc} type="video/mp4" />
+                  Il tuo browser non supporta la riproduzione video.
+                </video>
+              ) : (
+                <span class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">
+                  {item.format === "video" ? "Video in aggiornamento" : "Immagine in aggiornamento"}
+                </span>
+              )}
+            </div>
+            <p class="p-4 text-sm text-[#625850]">{item.title}</p>
+          </div>
+        )) : (
+          <div class="flex aspect-[1.2] items-end rounded-3xl bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)] p-5" role="img" aria-label={service.imageAlt}>
+            <span class="rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">Immagini in aggiornamento</span>
+          </div>
+        )}
+      </div>
+      <a class="mt-7 inline-flex text-sm font-semibold underline decoration-[#B89778] underline-offset-4" href="/prima-e-dopo">
+        Guarda la galleria completa <span class="ml-2" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="faq-title">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Dubbi frequenti</p>
+    <h2 id="faq-title" class="mt-3 font-display text-4xl">Domande e risposte.</h2>
+    <div class="mt-7 divide-y divide-[#1F1D1B]/10">
+      {service.faqs.map((faq) => (
+        <details class="py-5">
+          <summary class="cursor-pointer list-none pr-6 font-semibold text-[#302B27] marker:hidden">
+            {faq.question}
+            <span class="float-right text-[#8A684A]" aria-hidden="true">＋</span>
+          </summary>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-[#625850]">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <CtaConversionBlock
+    title={`Parliamo di ${service.name.toLowerCase()}.`}
+    description="Scrivimi per una consulenza: valuteremo insieme le tue esigenze e le informazioni utili prima di prenotare."
+    buttonLabel="Prenota ora"
+    message={`Ciao Marylin, vorrei prenotare una consulenza per ${service.name}.`}
+  />
+</BaseLayout>

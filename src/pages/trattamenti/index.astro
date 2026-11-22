@@ -1,0 +1,60 @@
+---
+import CtaConversionBlock from "@/components/CtaConversionBlock.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getTreatments } from "@/lib/content";
+
+const treatments = await getTreatments();
+---
+
+<BaseLayout
+  title="Trattamenti beauty e dermopigmentazione"
+  description="Scopri i trattamenti di dermopigmentazione, microblading, laminazione, lentiggini, piercing e gemme dentali di MAR STUDIO."
+>
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Il catalogo</p>
+    <h1 class="mt-3 max-w-3xl font-display text-5xl leading-tight sm:text-6xl">Trattamenti pensati intorno a te.</h1>
+    <p class="mt-5 max-w-2xl text-base leading-8 text-[#625850]">
+      Ogni percorso comincia dal dialogo. Scopri i servizi, le modalità e le domande più frequenti; durante la consulenza valuteremo insieme il trattamento più adatto alle tue esigenze.
+    </p>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {treatments.map((service, index) => (
+        <a
+          class="group overflow-hidden rounded-3xl border border-[#1F1D1B]/10 bg-white/60 transition-transform hover:-translate-y-1"
+          href={`/trattamenti/${service.slug}`}
+        >
+          <div
+            class:list={[
+              "relative flex aspect-[1.5] items-end overflow-hidden p-5",
+              index % 3 === 0
+                ? "bg-[linear-gradient(140deg,#E7D7C8,#C7A98C)]"
+                : index % 3 === 1
+                  ? "bg-[linear-gradient(140deg,#E8E2D9,#B6A89A)]"
+                  : "bg-[linear-gradient(140deg,#E9D7D1,#C79D8F)]",
+            ]}
+            role="img"
+            aria-label={service.imageAlt}
+          >
+            {service.image ? (
+              <img class="absolute inset-0 h-full w-full object-cover" src={service.image} alt={service.imageAlt} loading="lazy" />
+            ) : (
+              <span class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">{service.placeholderLabel}</span>
+            )}
+          </div>
+          <div class="p-6">
+            <h2 class="font-display text-2xl group-hover:text-[#8A684A]">{service.name}</h2>
+            <p class="mt-2 text-sm leading-6 text-[#6D6259]">{service.shortDescription}</p>
+            <span class="mt-5 inline-block text-xs font-semibold uppercase tracking-wide text-[#8A684A]">
+              Scopri il trattamento <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <CtaConversionBlock
+    title="Hai un dubbio su quale trattamento scegliere?"
+    description="Raccontami cosa vorresti valorizzare: durante la consulenza parleremo delle opzioni e delle aspettative."
+    message="Ciao Marylin, vorrei un consiglio per scegliere un trattamento."
+  />
+</BaseLayout>

@@ -1,0 +1,234 @@
+---
+import AnimatedStats from "@/components/AnimatedStats.astro";
+import CtaConversionBlock from "@/components/CtaConversionBlock.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getReviews, getStudio, getTreatments } from "@/lib/content";
+
+const site = await getStudio();
+const treatments = await getTreatments();
+const reviews = await getReviews();
+---
+
+<BaseLayout
+  title="Bellezza e dermopigmentazione"
+  description={site.brand.description}
+  whatsappMessage="Ciao Marylin, vorrei prenotare una consulenza presso MAR STUDIO."
+>
+  <section class="mx-auto grid min-h-[76vh] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1fr_0.9fr]">
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#8A684A]">
+        {site.hero.eyebrow}
+      </p>
+      <h1 class="mt-5 font-display text-5xl leading-[0.98] sm:text-7xl">
+        {site.hero.title}
+      </h1>
+      <p class="mt-6 max-w-xl text-base leading-8 text-[#625850] sm:text-lg">
+        {site.hero.description}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          class="rounded-full bg-[#1F1D1B] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#55463A]"
+          href="/contatti"
+        >
+          {site.hero.primaryAction}
+        </a>
+        <a
+          class="rounded-full border border-[#1F1D1B]/20 px-6 py-4 text-sm font-semibold transition-colors hover:bg-[#F2ECE4]"
+          href="/trattamenti"
+        >
+          {site.hero.secondaryAction}
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="relative flex min-h-[360px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#E6CDB8_0%,transparent_38%),linear-gradient(145deg,#D8C6B4_0%,#EEE3D7_48%,#B89778_100%)] p-7 sm:min-h-[500px] sm:p-10"
+      role="img"
+      aria-label={site.hero.imageAlt}
+    >
+      {site.hero.image && <img class="absolute inset-0 h-full w-full object-cover" src={site.hero.image} alt={site.hero.imageAlt} />}
+      <div class="absolute inset-5 rounded-[1.5rem] border border-white/50"></div>
+      <div class="relative max-w-xs rounded-2xl bg-[#FAF8F5]/85 p-5 backdrop-blur-sm">
+        <p class="font-display text-2xl">{site.hero.imageLabel}</p>
+        {!site.hero.image && (
+          <p class="mt-2 text-xs leading-5 text-[#625850]">
+            Uno spazio visivo pronto ad accogliere le fotografie originali dello studio.
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <AnimatedStats />
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="treatments-title">
+    <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Trattamenti</p>
+        <h2 id="treatments-title" class="mt-3 font-display text-4xl sm:text-5xl">
+          Piccoli gesti, scelti per te.
+        </h2>
+      </div>
+      <a class="text-sm font-semibold underline decoration-[#B89778] underline-offset-4" href="/trattamenti">
+        Esplora tutti i trattamenti <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {treatments.map((service, index) => (
+        <a
+          class="group overflow-hidden rounded-3xl border border-[#1F1D1B]/10 bg-white/60 transition-transform hover:-translate-y-1"
+          href={`/trattamenti/${service.slug}`}
+        >
+          <div
+            class:list={[
+              "flex aspect-[1.65] items-end p-5",
+              index % 3 === 0
+                ? "bg-[linear-gradient(140deg,#E7D7C8,#C7A98C)]"
+                : index % 3 === 1
+                  ? "bg-[linear-gradient(140deg,#E8E2D9,#B6A89A)]"
+                  : "bg-[linear-gradient(140deg,#E9D7D1,#C79D8F)]",
+            ]}
+            role="img"
+            aria-label={service.imageAlt}
+          >
+            <span class="rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs text-[#51463E]">
+              {service.placeholderLabel}
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl group-hover:text-[#8A684A]">{service.name}</h3>
+            <p class="mt-2 text-sm leading-6 text-[#6D6259]">{service.shortDescription}</p>
+            <span class="mt-5 inline-block text-xs font-semibold uppercase tracking-wide text-[#8A684A]">
+              Scopri di più <span aria-hidden="true">→</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-[#F2ECE4] px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="about-title">
+    <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+      <div
+        class="relative flex min-h-[300px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_60%_30%,#EAD8C8_0%,transparent_42%),linear-gradient(145deg,#C5A880,#EEE3D7)] p-7"
+        role="img"
+        aria-label="Spazio per un ritratto professionale di Marylin Casà"
+      >
+        {site.about.image && <img class="absolute inset-0 h-full w-full object-cover" src={site.about.image} alt="Ritratto professionale di Marylin Casà" loading="lazy" />}
+        {!site.about.image && (
+          <p class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs text-[#51463E]">
+            Uno spazio per il ritratto di Marylin
+          </p>
+        )}
+      </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">{site.about.eyebrow}</p>
+        <h2 id="about-title" class="mt-3 font-display text-4xl sm:text-5xl">{site.about.title}</h2>
+        <p class="mt-5 text-sm leading-7 text-[#625850]">{site.about.paragraphs[0]}</p>
+        <p class="mt-4 text-sm leading-7 text-[#625850]">{site.about.paragraphs[1]}</p>
+        <a class="mt-7 inline-flex text-sm font-semibold underline decoration-[#B89778] underline-offset-4" href="/chi-sono">
+          Conosci Marylin <span class="ml-2" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="results-title">
+    <div class="grid gap-8 md:grid-cols-2 md:items-center">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Risultati</p>
+        <h2 id="results-title" class="mt-3 font-display text-4xl sm:text-5xl">La bellezza dei dettagli, nel tempo.</h2>
+        <p class="mt-5 max-w-xl text-sm leading-7 text-[#625850]">
+          Una galleria di lavori reali sarà pubblicata con descrizioni accurate e il consenso delle persone ritratte.
+        </p>
+        <a class="mt-7 inline-flex text-sm font-semibold underline decoration-[#B89778] underline-offset-4" href="/prima-e-dopo">
+          Vai alla galleria <span class="ml-2" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div
+          class="flex aspect-[0.85] items-end rounded-3xl bg-[linear-gradient(145deg,#D9C5B2,#F2ECE4)] p-4"
+          role="img"
+          aria-label={site.mediaPlaceholders[1].alt}
+        >
+          <span class="rounded-full bg-[#FAF8F5]/85 px-3 py-2 text-xs">Prima</span>
+        </div>
+        <div
+          class="mt-8 flex aspect-[0.85] items-end rounded-3xl bg-[linear-gradient(145deg,#B89778,#E8D8C9)] p-4"
+          role="img"
+          aria-label={site.mediaPlaceholders[1].alt}
+        >
+          <span class="rounded-full bg-[#FAF8F5]/85 px-3 py-2 text-xs">Dopo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="reviews-title">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Esperienze</p>
+      <h2 id="reviews-title" class="mt-3 font-display text-4xl">Ogni percorso parte dall'ascolto.</h2>
+      {reviews.length > 0 ? (
+        <div class="mt-8 grid gap-4 text-left sm:grid-cols-2">
+        {reviews.map((review) => (
+            <figure class="rounded-2xl bg-[#FAF8F5] p-6">
+              <p class="text-sm tracking-widest text-[#9A744E]" aria-label={`${review.rating} stelle su 5`}>
+                {"★".repeat(review.rating)}
+              </p>
+              <blockquote class="text-sm leading-7 text-[#625850]">“{review.text}”</blockquote>
+              <figcaption class="mt-4 text-xs font-semibold">
+                {review.name} <span class="font-normal text-[#76695F]">· {review.treatment}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <p class="mt-5 text-sm leading-7 text-[#625850]">
+          Le recensioni autentiche saranno condivise qui con il consenso delle clienti.
+        </p>
+      )}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="location-title">
+    <div class="grid gap-8 rounded-[2rem] border border-[#1F1D1B]/10 bg-white/60 p-7 sm:p-10 md:grid-cols-[1fr_1fr] md:items-center">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Dove siamo</p>
+        <h2 id="location-title" class="mt-3 font-display text-4xl">Ti aspettiamo in studio.</h2>
+        {site.contact.address.street || site.contact.address.locality ? (
+          <p class="mt-4 text-sm leading-7 text-[#625850]">
+            {[site.contact.address.street, site.contact.address.postalCode, site.contact.address.locality, site.contact.address.province]
+              .filter(Boolean)
+              .join(", ")}
+          </p>
+        ) : (
+          <p class="mt-4 text-sm leading-7 text-[#625850]">
+            L'indirizzo e le indicazioni per raggiungere lo studio saranno aggiornati appena confermati.
+          </p>
+        )}
+        <a
+          class="mt-6 inline-flex rounded-full border border-[#1F1D1B]/20 px-5 py-3 text-sm font-semibold transition-colors hover:bg-[#F2ECE4]"
+          href={site.social.mapsSearchUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Apri su Google Maps <span class="ml-2" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <iframe
+        class="h-64 w-full rounded-2xl border-0 bg-[#F2ECE4] sm:h-80"
+        src={site.social.mapsEmbedUrl}
+        title="Mappa per cercare MAR STUDIO by Marylin Casà"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+
+  <CtaConversionBlock
+    title={site.conversion.title}
+    description={site.conversion.description}
+    buttonLabel={site.hero.primaryAction}
+    message="Ciao Marylin, vorrei prenotare una consulenza presso MAR STUDIO."
+  />
+</BaseLayout>

@@ -1,0 +1,11 @@
+{
+  "id": "pmu-01",
+  "category": "pmu",
+  "format": "photo",
+  "title": "Dermopigmentazione",
+  "description": "Immagini dei risultati PMU da aggiungere con il consenso delle clienti.",
+  "beforeSrc": "",
+  "afterSrc": "",
+  "alt": "Spazio per un risultato di dermopigmentazione prima e dopo",
+  "order": 1
+}

@@ -1,0 +1,87 @@
+---
+import { getStudio, getTreatments } from "@/lib/content";
+
+const site = await getStudio();
+const treatments = await getTreatments();
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isCurrent = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
+---
+
+<header class="sticky top-0 z-40 border-b border-[#1F1D1B]/10 bg-[#FAF8F5]/95 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+    <a class="group flex flex-col leading-none" href="/" aria-label={`${site.brand.displayName}, home`}>
+      <span class="font-display text-2xl tracking-[0.12em]">{site.brand.name}</span>
+      <span class="mt-1 text-[0.6rem] tracking-[0.18em] text-[#76695F]">BY MARYLIN CASÀ</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 lg:flex" aria-label="Navigazione principale">
+      {site.navigation.filter((item) => item.href !== "/trattamenti").map((item) => (
+        <a
+          class:list={[
+            "text-sm transition-colors hover:text-[#8A684A]",
+            isCurrent(item.href) ? "text-[#8A684A]" : "text-[#49433E]",
+          ]}
+          href={item.href}
+          aria-current={isCurrent(item.href) ? "page" : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+      <details class="group relative">
+        <summary class="cursor-pointer list-none text-sm text-[#49433E] transition-colors hover:text-[#8A684A]">
+          Trattamenti <span aria-hidden="true" class="ml-1">⌄</span>
+        </summary>
+        <div class="absolute right-0 top-full mt-3 min-w-56 rounded-2xl border border-[#1F1D1B]/10 bg-[#FAF8F5] p-2 shadow-xl">
+          {treatments.map((service) => (
+            <a
+              class="block rounded-xl px-4 py-2.5 text-sm text-[#49433E] transition-colors hover:bg-[#F2ECE4] hover:text-[#8A684A]"
+              href={`/trattamenti/${service.slug}`}
+            >
+              {service.navLabel}
+            </a>
+          ))}
+        </div>
+      </details>
+    </nav>
+
+    <a
+      class="hidden rounded-full bg-[#1F1D1B] px-5 py-3 text-xs font-semibold tracking-wide text-white transition-colors hover:bg-[#55463A] lg:inline-flex"
+      href="/contatti"
+    >
+      Prenota una consulenza
+    </a>
+
+    <details class="relative lg:hidden">
+      <summary class="cursor-pointer list-none rounded-full border border-[#1F1D1B]/15 px-4 py-2 text-sm">
+        Menu <span aria-hidden="true" class="ml-1">⌄</span>
+      </summary>
+      <nav
+        class="absolute right-0 top-full mt-3 flex max-h-[75vh] min-w-64 flex-col overflow-y-auto rounded-2xl border border-[#1F1D1B]/10 bg-[#FAF8F5] p-3 shadow-xl"
+        aria-label="Navigazione mobile"
+      >
+        {site.navigation.map((item) => (
+          <a
+            class:list={[
+              "rounded-xl px-4 py-3 text-sm transition-colors hover:bg-[#F2ECE4]",
+              isCurrent(item.href) ? "text-[#8A684A]" : "text-[#49433E]",
+            ]}
+            href={item.href}
+            aria-current={isCurrent(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+        <div class="my-2 border-t border-[#1F1D1B]/10"></div>
+        {treatments.map((service) => (
+          <a
+            class="rounded-xl px-4 py-2.5 text-sm text-[#76695F] transition-colors hover:bg-[#F2ECE4]"
+            href={`/trattamenti/${service.slug}`}
+          >
+            {service.navLabel}
+          </a>
+        ))}
+      </nav>
+    </details>
+  </div>
+</header>

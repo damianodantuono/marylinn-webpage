@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import { getStudio } from "@/lib/content";
+import Footer from "@/components/Footer.astro";
+import Navbar from "@/components/Navbar.astro";
+import WhatsAppFloat from "@/components/WhatsAppFloat.astro";
+
+const site = await getStudio();
+
+type Props = {
+  title?: string;
+  description?: string;
+  whatsappMessage?: string;
+};
+
+const {
+  title = site.brand.displayName,
+  description = site.brand.description,
+  whatsappMessage,
+} = Astro.props;
+const pageTitle =
+  title === site.brand.displayName ? title : `${title} | ${site.brand.displayName}`;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FAF8F5" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+  </head>
+  <body class="min-h-screen bg-[#FAF8F5] font-sans text-[#1F1D1B] antialiased">
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFloat message={whatsappMessage} />
+  </body>
+</html>

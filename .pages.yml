@@ -1,0 +1,261 @@
+media:
+  input: public/images/uploads
+  output: /images/uploads
+  extensions: [jpg, jpeg, png, webp, avif]
+  rename: safe
+
+content:
+  - name: studio
+    label: Impostazioni studio
+    type: file
+    path: src/content/studio/settings.json
+    format: json
+    fields:
+      - name: brand
+        label: Marchio
+        type: object
+        fields:
+          - { name: name, label: Nome breve, type: string }
+          - { name: displayName, label: Nome completo, type: string }
+          - { name: owner, label: Titolare, type: string }
+          - { name: descriptor, label: Descrizione breve, type: string }
+          - { name: tagline, label: Motto, type: string }
+          - { name: description, label: Descrizione SEO, type: text }
+      - name: contact
+        label: Contatti
+        type: object
+        fields:
+          - { name: whatsappNumber, label: Numero WhatsApp internazionale, type: string }
+          - { name: phoneDisplay, label: Telefono visualizzato, type: string }
+          - { name: email, label: Email, type: string }
+          - name: address
+            label: Indirizzo
+            type: object
+            fields:
+              - { name: street, label: Via e numero, type: string }
+              - { name: postalCode, label: CAP, type: string }
+              - { name: locality, label: Comune, type: string }
+              - { name: province, label: Provincia, type: string }
+          - { name: openingHours, label: Orari, type: text }
+          - { name: web3FormsAccessKey, label: Chiave Web3Forms, type: string }
+      - name: social
+        label: Social e mappe
+        type: object
+        fields:
+          - { name: instagramUrl, label: URL Instagram, type: string }
+          - { name: instagramHandle, label: Nome profilo Instagram, type: string }
+          - { name: mapsSearchUrl, label: Link Google Maps, type: string }
+          - { name: mapsEmbedUrl, label: URL mappa incorporata, type: string }
+      - name: navigation
+        label: Navigazione
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Etichetta, type: string }
+          - { name: href, label: Destinazione, type: string }
+      - name: hero
+        label: Copertina Home
+        type: object
+        fields:
+          - { name: eyebrow, label: Testo introduttivo, type: string }
+          - { name: title, label: Titolo, type: string }
+          - { name: description, label: Descrizione, type: text }
+          - { name: primaryAction, label: CTA principale, type: string }
+          - { name: secondaryAction, label: CTA secondaria, type: string }
+          - { name: imageAlt, label: Testo alternativo immagine, type: string }
+          - { name: imageLabel, label: Etichetta immagine, type: string }
+          - { name: image, label: Immagine copertina, type: image }
+      - name: about
+        label: Presentazione
+        type: object
+        fields:
+          - { name: eyebrow, label: Testo introduttivo, type: string }
+          - { name: title, label: Titolo, type: string }
+          - { name: image, label: Ritratto, type: image }
+          - name: paragraphs
+            label: Testi di presentazione
+            type: text
+            list: true
+      - name: stats
+        label: Numeri dello studio
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Etichetta, type: string }
+          - { name: value, label: Valore (vuoto se non disponibile), type: number }
+          - { name: suffix, label: Suffisso, type: string }
+      - name: giftCards
+        label: Gift Card
+        type: object
+        fields:
+          - name: amounts
+            label: Importi disponibili
+            type: number
+            list: true
+          - { name: note, label: Nota, type: text }
+      - name: mediaPlaceholders
+        label: Testi immagini segnaposto
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Etichetta, type: string }
+          - { name: alt, label: Testo alternativo, type: string }
+          - { name: category, label: Categoria, type: string }
+      - name: media
+        label: Video studio
+        type: object
+        fields:
+          - name: studioVideo
+            label: Presentazione video
+            type: object
+            fields:
+              - { name: src, label: URL video, type: string }
+              - { name: poster, label: Immagine di anteprima, type: image }
+              - { name: alt, label: Testo alternativo, type: string }
+      - name: conversion
+        label: Invito alla prenotazione
+        type: object
+        fields:
+          - { name: title, label: Titolo, type: string }
+          - { name: description, label: Descrizione, type: text }
+          - { name: buttonLabel, label: Testo pulsante, type: string }
+          - { name: instagramTitle, label: Titolo Instagram, type: string }
+          - { name: instagramDescription, label: Descrizione Instagram, type: text }
+      - name: footer
+        label: Piè di pagina
+        type: object
+        fields:
+          - { name: note, label: Nota, type: text }
+          - { name: privacyLabel, label: Etichetta Privacy, type: string }
+          - { name: cookiesLabel, label: Etichetta Cookie policy, type: string }
+
+  - name: treatments
+    label: Trattamenti
+    type: collection
+    path: src/content/treatments
+    filename: "{fields.slug}.json"
+    format: json
+    view:
+      primary: name
+    fields:
+      - { name: slug, label: Slug URL, type: string, required: true }
+      - { name: order, label: Ordine, type: number }
+      - { name: name, label: Nome trattamento, type: string, required: true }
+      - { name: navLabel, label: Nome menu, type: string }
+      - { name: shortDescription, label: Descrizione breve, type: text }
+      - { name: description, label: Descrizione completa, type: text }
+      - { name: duration, label: Durata, type: text }
+      - name: benefits
+        label: Benefici e caratteristiche
+        type: text
+        list: true
+      - name: faqs
+        label: Domande frequenti
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{question}"
+        fields:
+          - { name: question, label: Domanda, type: string }
+          - { name: answer, label: Risposta, type: text }
+      - { name: imageAlt, label: Testo alternativo immagine, type: string }
+      - { name: placeholderLabel, label: Etichetta immagine segnaposto, type: string }
+      - { name: image, label: Immagine trattamento, type: image }
+
+  - name: prima-e-dopo
+    label: Prima e dopo
+    type: collection
+    path: src/content/prima-e-dopo
+    filename: "{fields.id}.json"
+    format: json
+    view:
+      primary: title
+    fields:
+      - { name: id, label: ID contenuto, type: string, required: true }
+      - { name: order, label: Ordine, type: number }
+      - name: category
+        label: Trattamento
+        type: select
+        options:
+          values:
+            - { label: PMU, name: pmu }
+            - { label: Microblading, name: microblading }
+            - { label: Lentiggini, name: lentiggini }
+            - { label: Laminazione, name: laminazione }
+            - { label: Piercing, name: piercing }
+            - { label: Gemme dentali, name: gemme-dentali }
+      - name: format
+        label: Formato
+        type: select
+        options:
+          values:
+            - { label: Foto, name: photo }
+            - { label: Video, name: video }
+      - { name: title, label: Titolo, type: string }
+      - { name: description, label: Descrizione, type: text }
+      - { name: beforeSrc, label: Foto prima, type: image }
+      - { name: afterSrc, label: Foto dopo, type: image }
+      - { name: videoSrc, label: URL video, type: string }
+      - { name: poster, label: Copertina video, type: image }
+      - { name: alt, label: Testo alternativo, type: string }
+
+  - name: courses
+    label: Corsi Academy
+    type: collection
+    path: src/content/courses
+    filename: "{fields.slug}.json"
+    format: json
+    view:
+      primary: title
+    fields:
+      - { name: slug, label: Slug URL, type: string, required: true }
+      - { name: order, label: Ordine, type: number }
+      - { name: title, label: Titolo corso, type: string, required: true }
+      - { name: description, label: Descrizione, type: text }
+      - { name: audience, label: A chi è rivolto, type: text }
+      - { name: duration, label: Durata, type: text }
+      - name: programme
+        label: Programma
+        type: text
+        list: true
+      - { name: kit, label: Kit e materiali, type: text }
+      - { name: status, label: Stato, type: string }
+      - { name: certificateImage, label: Immagine attestato, type: image }
+
+  - name: products
+    label: Prodotti shop
+    type: collection
+    path: src/content/products
+    filename: "{fields.slug}.json"
+    format: json
+    view:
+      primary: name
+    fields:
+      - { name: slug, label: Slug, type: string, required: true }
+      - { name: order, label: Ordine, type: number }
+      - { name: name, label: Nome prodotto, type: string, required: true }
+      - { name: description, label: Descrizione, type: text }
+      - name: benefits
+        label: Benefici
+        type: text
+        list: true
+      - { name: indicativePrice, label: Prezzo indicativo, type: string }
+      - { name: imageAlt, label: Testo alternativo, type: string }
+      - { name: image, label: Foto prodotto, type: image }
+
+  - name: reviews
+    label: Recensioni
+    type: collection
+    path: src/content/reviews
+    filename: "{fields.slug}.json"
+    format: json
+    view:
+      primary: name
+    fields:
+      - { name: slug, label: Slug, type: string, required: true }
+      - { name: order, label: Ordine, type: number }
+      - { name: name, label: Nome cliente, type: string, required: true }
+      - { name: treatment, label: Trattamento, type: string }
+      - { name: text, label: Testo recensione, type: text }
+      - { name: rating, label: Valutazione (1-5), type: number }

@@ -1,0 +1,31 @@
+{
+  "slug": "piercing",
+  "name": "Piercing",
+  "navLabel": "Piercing",
+  "shortDescription": "Un servizio attento alla scelta del gioiello, alla consulenza e alle procedure di igiene.",
+  "description": "Ogni piercing inizia con un confronto sulla zona, sul gioiello e sulle modalità di cura. Prima di procedere vengono condivise le informazioni sul servizio e valutata l'idoneità. Le prestazioni sono soggette ai requisiti igienico-sanitari e alle disposizioni applicabili nel luogo in cui opera lo studio.",
+  "duration": "La durata dipende dalla zona e viene comunicata prima dell'appuntamento.",
+  "benefits": [
+    "Consulenza sulla scelta del gioiello e della zona.",
+    "Attenzione alle procedure igieniche e alle indicazioni di cura.",
+    "Informazioni preliminari chiare su appuntamento e assistenza."
+  ],
+  "faqs": [
+    {
+      "question": "Come scelgo il gioiello?",
+      "answer": "La scelta viene valutata insieme in base alla zona, ai materiali disponibili e alle caratteristiche del piercing."
+    },
+    {
+      "question": "Quanto tempo serve per la guarigione?",
+      "answer": "I tempi variano in base alla zona e alla persona. Riceverai indicazioni di cura; in caso di problemi o dubbi è importante rivolgersi a un professionista sanitario."
+    },
+    {
+      "question": "Ci sono limiti di età?",
+      "answer": "Requisiti, documenti ed eventuale consenso dipendono dalla zona e dalle regole applicabili. Contatta lo studio prima di fissare l'appuntamento per verificare la procedura."
+    }
+  ],
+  "imageAlt": "Esempio illustrativo di servizio piercing",
+  "placeholderLabel": "Piercing",
+  "order": 5,
+  "image": ""
+}

@@ -1,0 +1,31 @@
+{
+  "slug": "lentiggini",
+  "name": "Lentiggini semipermanenti",
+  "navLabel": "Lentiggini",
+  "shortDescription": "Un dettaglio delicato ispirato alle lentiggini naturali, progettato sul tuo viso.",
+  "description": "Le lentiggini semipermanenti aggiungono al viso un dettaglio leggero e personalizzato. Posizione, quantità e intensità vengono concordate in consulenza, così da rispettare i tuoi lineamenti e mantenere un effetto armonioso.",
+  "duration": "La durata viene concordata in base al progetto e alla valutazione della pelle.",
+  "benefits": [
+    "Distribuzione e intensità personalizzate.",
+    "Progetto condiviso prima di procedere.",
+    "Indicazioni chiare sulla cura della pelle dopo la seduta."
+  ],
+  "faqs": [
+    {
+      "question": "Posso decidere quante lentiggini fare?",
+      "answer": "Sì, il progetto si definisce insieme durante la consulenza, valutando posizione e intensità desiderate."
+    },
+    {
+      "question": "Il risultato è permanente?",
+      "answer": "No, è un trattamento semipermanente. La resa e la durata possono variare in base alla pelle e alla cura successiva."
+    },
+    {
+      "question": "È possibile fare il trattamento su ogni tipo di pelle?",
+      "answer": "La pelle viene valutata prima di fissare il trattamento. In caso di dubbi o condizioni cutanee particolari, è opportuno confrontarsi con un professionista sanitario."
+    }
+  ],
+  "imageAlt": "Esempio illustrativo di lentiggini semipermanenti",
+  "placeholderLabel": "Lentiggini",
+  "order": 3,
+  "image": ""
+}

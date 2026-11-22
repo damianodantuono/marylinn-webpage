@@ -1,0 +1,94 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getProducts, getStudio, getWhatsAppUrl } from "@/lib/content";
+
+const site = await getStudio();
+const products = await getProducts();
+---
+
+<BaseLayout
+  title="Sieri e Gift Card"
+  description="Scopri la vetrina MAR STUDIO di sieri, prodotti per la cura e Gift Card. Richieste e disponibilità vengono gestite direttamente su WhatsApp."
+>
+  <section class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">La vetrina MAR STUDIO</p>
+    <h1 class="mt-3 font-display text-5xl sm:text-6xl">Piccole attenzioni, da regalare o regalarti.</h1>
+    <p class="mt-5 max-w-2xl text-base leading-8 text-[#625850]">
+      Una selezione di prodotti per la cura e Gift Card da richiedere direttamente allo studio. Disponibilità, indicazioni e importi vengono confermati prima dell'acquisto.
+    </p>
+  </section>
+
+  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="products-title">
+    <div class="mx-auto max-w-7xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Cura quotidiana</p>
+      <h2 id="products-title" class="mt-3 font-display text-4xl sm:text-5xl">Sieri e prodotti.</h2>
+      {products.length > 0 ? (
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((product) => (
+            <article class="overflow-hidden rounded-3xl bg-[#FAF8F5]">
+              <div class="relative flex aspect-[1.1] items-end overflow-hidden bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)] p-5" role="img" aria-label={product.imageAlt}>
+                {product.image ? (
+                  <img class="absolute inset-0 h-full w-full object-cover" src={product.image} alt={product.imageAlt} loading="lazy" />
+                ) : (
+                  <span class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">Immagine prodotto in aggiornamento</span>
+                )}
+              </div>
+              <div class="p-6">
+                <h3 class="font-display text-2xl">{product.name}</h3>
+                <p class="mt-3 text-sm leading-6 text-[#625850]">{product.description}</p>
+                <ul class="mt-3 space-y-1 text-xs text-[#6D6259]">
+                  {product.benefits.map((benefit) => <li>· {benefit}</li>)}
+                </ul>
+                <p class="mt-4 text-sm font-semibold">{product.indicativePrice}</p>
+                <a class="mt-5 inline-flex rounded-full bg-[#1F1D1B] px-5 py-3 text-sm font-semibold text-white" href={getWhatsAppUrl(site, `Ciao Marylin, vorrei informazioni su ${product.name}.`) ?? "/contatti"}>
+                  Richiedi su WhatsApp
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="mt-7 max-w-3xl rounded-3xl bg-[#FAF8F5] p-7 sm:p-9">
+          <h3 class="font-display text-2xl">Selezione prodotti in aggiornamento.</h3>
+          <p class="mt-3 text-sm leading-7 text-[#625850]">
+            I prodotti e le relative informazioni saranno pubblicati dopo la verifica della disponibilità e delle indicazioni d'uso.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="gift-cards-title">
+    <div class="grid gap-8 overflow-hidden rounded-[2rem] bg-[#1F1D1B] text-[#FAF8F5] md:grid-cols-[1.1fr_0.9fr]">
+      <div class="px-7 py-10 sm:px-12 sm:py-14">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A880]">Un pensiero speciale</p>
+        <h2 id="gift-cards-title" class="mt-4 font-display text-4xl sm:text-5xl">Gift Card MAR STUDIO.</h2>
+        <p class="mt-5 max-w-xl text-sm leading-7 text-white/70">
+          Regala un momento di cura. Puoi chiedere informazioni sulle opzioni disponibili e concordare il trattamento o l'importo direttamente con lo studio.
+        </p>
+        <p class="mt-4 text-xs leading-6 text-white/55">{site.giftCards.note}</p>
+        <a
+          class="mt-7 inline-flex rounded-full bg-[#C5A880] px-6 py-4 text-sm font-semibold text-[#1F1D1B] transition-colors hover:bg-[#D7C1A6]"
+          href={getWhatsAppUrl(site, "Ciao Marylin, vorrei informazioni sulle Gift Card MAR STUDIO.") ?? "/contatti"}
+        >
+          Regala / prenota una Gift Card
+        </a>
+      </div>
+      <div class="flex items-center justify-center bg-[radial-gradient(ellipse_at_50%_30%,#B89778_0%,transparent_60%),linear-gradient(145deg,#51463E,#1F1D1B)] p-8">
+        <div class="w-full max-w-sm rotate-[-2deg] rounded-3xl border border-[#FAF8F5]/30 bg-[#FAF8F5]/10 p-7 backdrop-blur-sm">
+          <p class="font-display text-2xl tracking-[0.12em]">{site.brand.name}</p>
+          <p class="mt-2 text-xs tracking-[0.18em] text-[#E8D8C9]">GIFT CARD</p>
+          <div class="mt-10 flex flex-wrap gap-2">
+            {site.giftCards.amounts.map((amount) => (
+              <span class="rounded-full border border-white/30 px-3 py-2 text-xs">{amount} €</span>
+            ))}
+            <span class="rounded-full border border-white/30 px-3 py-2 text-xs">Importo personalizzato</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mt-4 text-center text-xs text-[#76695F]">
+      Vetrina informativa: non sono previsti carrello o pagamenti online.
+    </p>
+  </section>
+</BaseLayout>

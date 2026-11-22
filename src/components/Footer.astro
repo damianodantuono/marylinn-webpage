@@ -1,0 +1,63 @@
+---
+import { getStudio, getWhatsAppUrl } from "@/lib/content";
+
+const site = await getStudio();
+const whatsappUrl = getWhatsAppUrl(site);
+---
+
+<footer class="bg-[#1F1D1B] text-[#FAF8F5]">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-4">
+    <div class="lg:col-span-2">
+      <a class="font-display text-3xl tracking-[0.12em]" href="/">
+        {site.brand.name}
+      </a>
+      <p class="mt-1 text-xs tracking-[0.18em] text-[#C5A880]">BY MARYLIN CASÀ</p>
+      <p class="mt-5 max-w-sm text-sm leading-7 text-white/65">{site.footer.note}</p>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A880]">
+        Esplora
+      </h2>
+      <ul class="mt-4 space-y-3 text-sm text-white/70">
+        {site.navigation.map((item) => (
+          <li><a class="transition-colors hover:text-white" href={item.href}>{item.label}</a></li>
+        ))}
+        <li><a class="transition-colors hover:text-white" href="/privacy-policy">{site.footer.privacyLabel}</a></li>
+        <li><a class="transition-colors hover:text-white" href="/cookie-policy">{site.footer.cookiesLabel}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A880]">
+        Contatti
+      </h2>
+      <address class="mt-4 space-y-3 text-sm not-italic leading-6 text-white/70">
+        {site.contact.address.street || site.contact.address.locality ? (
+          <p>
+            {[site.contact.address.street, site.contact.address.postalCode, site.contact.address.locality, site.contact.address.province]
+              .filter(Boolean)
+              .join(", ")}
+          </p>
+        ) : (
+          <p>Indirizzo dello studio in fase di aggiornamento.</p>
+        )}
+        <p>{site.contact.openingHours}</p>
+        {site.contact.phoneDisplay && <p><a href={`tel:${site.contact.phoneDisplay}`}>{site.contact.phoneDisplay}</a></p>}
+        {site.contact.email && <p><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>}
+        {whatsappUrl && (
+          <p><a class="transition-colors hover:text-white" href={whatsappUrl} target="_blank" rel="noreferrer">Scrivici su WhatsApp</a></p>
+        )}
+        {site.social.instagramUrl && (
+          <p><a class="transition-colors hover:text-white" href={site.social.instagramUrl} target="_blank" rel="noreferrer">Instagram</a></p>
+        )}
+      </address>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-white/45 sm:px-8 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {new Date().getFullYear()} {site.brand.displayName}. Tutti i diritti riservati.</p>
+      {site.contact.email && <p><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>}
+    </div>
+  </div>
+</footer>

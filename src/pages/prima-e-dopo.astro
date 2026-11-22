@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getGallery, getTreatments } from "@/lib/content";
+
+const treatments = await getTreatments();
+const gallery = await getGallery();
+---
+
+<BaseLayout
+  title="Prima e dopo: galleria risultati"
+  description="Esplora la galleria dei trattamenti MAR STUDIO. Foto e video saranno pubblicati con descrizioni e consenso delle persone ritratte."
+>
+  <section class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Galleria risultati</p>
+    <h1 class="mt-3 font-display text-5xl sm:text-6xl">Prima e dopo.</h1>
+    <p class="mt-5 max-w-2xl text-base leading-8 text-[#625850]">
+      Ogni risultato è personale. La galleria accoglierà fotografie e video originali, condivisi con il consenso delle persone ritratte.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filtra i risultati per trattamento">
+      <button
+        class="rounded-full bg-[#1F1D1B] px-4 py-2.5 text-xs font-semibold text-white"
+        type="button"
+        data-gallery-filter="all"
+        aria-pressed="true"
+      >
+        Tutti
+      </button>
+      {treatments.map((service) => (
+        <button
+          class="rounded-full border border-[#1F1D1B]/15 px-4 py-2.5 text-xs font-semibold text-[#49433E] transition-colors hover:bg-[#F2ECE4]"
+          type="button"
+          data-gallery-filter={service.slug}
+          aria-pressed="false"
+        >
+          {service.navLabel}
+        </button>
+      ))}
+    </div>
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-gallery-grid>
+      {gallery.map((item, index) => (
+        <article class="overflow-hidden rounded-3xl border border-[#1F1D1B]/10 bg-white/70" data-gallery-category={item.category}>
+          {item.format === "video" ? (
+            item.videoSrc ? (
+              <video
+                class="aspect-[1.2] w-full bg-[#F2ECE4] object-cover"
+                controls
+                playsinline
+                preload="none"
+                poster={item.poster}
+                aria-label={item.alt}
+              >
+                <source src={item.videoSrc} type="video/mp4" />
+                Il tuo browser non supporta la riproduzione video.
+              </video>
+            ) : (
+              <div
+                class="relative flex aspect-[1.2] items-end overflow-hidden bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)]"
+                role="img"
+                aria-label={item.alt}
+              >
+                {item.poster && <img class="absolute inset-0 h-full w-full object-cover" src={item.poster} alt={item.alt} loading="lazy" />}
+                <span class="relative m-4 rounded-full bg-[#FAF8F5]/90 px-4 py-2 text-xs">
+                  Video in aggiornamento
+                </span>
+              </div>
+            )
+          ) : (
+            <div class="grid aspect-[1.2] grid-cols-2 gap-1 bg-[#FAF8F5]">
+              {item.beforeSrc ? (
+                <img class="h-full w-full object-cover" src={item.beforeSrc} alt={`${item.alt} — prima`} loading="lazy" />
+              ) : (
+                <div
+                  class:list={[
+                    "flex items-end p-3",
+                    index % 2 === 0 ? "bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)]" : "bg-[linear-gradient(145deg,#E8E2D9,#B6A89A)]",
+                  ]}
+                  role="img"
+                  aria-label={`${item.alt} — prima, immagine in aggiornamento`}
+                >
+                  <span class="rounded-full bg-[#FAF8F5]/85 px-3 py-1.5 text-xs">Prima</span>
+                </div>
+              )}
+              {item.afterSrc ? (
+                <img class="h-full w-full object-cover" src={item.afterSrc} alt={`${item.alt} — dopo`} loading="lazy" />
+              ) : (
+                <div
+                  class:list={[
+                    "flex items-end p-3",
+                    index % 2 === 0 ? "bg-[linear-gradient(145deg,#D8C6B4,#B89778)]" : "bg-[linear-gradient(145deg,#D9C5B2,#C5A880)]",
+                  ]}
+                  role="img"
+                  aria-label={`${item.alt} — dopo, immagine in aggiornamento`}
+                >
+                  <span class="rounded-full bg-[#FAF8F5]/85 px-3 py-1.5 text-xs">Dopo</span>
+                </div>
+              )}
+            </div>
+          )}
+          <div class="p-5">
+            <h2 class="font-display text-2xl">{item.title}</h2>
+            <p class="mt-2 text-xs leading-5 text-[#6D6259]">{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="mt-7 text-center text-xs text-[#76695F]" data-gallery-empty hidden>
+      Non ci sono ancora contenuti per questa categoria.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>("[data-gallery-filter]");
+  const galleryCards = document.querySelectorAll<HTMLElement>("[data-gallery-category]");
+  const emptyMessage = document.querySelector<HTMLElement>("[data-gallery-empty]");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.galleryFilter ?? "all";
+      let visibleCards = 0;
+
+      filterButtons.forEach((filterButton) => {
+        const selected = filterButton === button;
+        filterButton.setAttribute("aria-pressed", String(selected));
+        filterButton.classList.toggle("bg-[#1F1D1B]", selected);
+        filterButton.classList.toggle("text-white", selected);
+        filterButton.classList.toggle("border", !selected);
+        filterButton.classList.toggle("border-[#1F1D1B]/15", !selected);
+      });
+
+      galleryCards.forEach((card) => {
+        const visible = filter === "all" || card.dataset.galleryCategory === filter;
+        card.classList.toggle("hidden", !visible);
+        if (visible) visibleCards += 1;
+      });
+
+      if (emptyMessage) emptyMessage.hidden = visibleCards > 0;
+    });
+  });
+</script>

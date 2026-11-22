@@ -1,0 +1,31 @@
+{
+  "slug": "laminazione",
+  "name": "Laminazione ciglia e sopracciglia",
+  "navLabel": "Laminazione",
+  "shortDescription": "Un trattamento dedicato a ordinare e valorizzare lo sguardo rispettando la tua forma naturale.",
+  "description": "La laminazione di ciglia o sopracciglia è un trattamento cosmetico che aiuta a disciplinare e valorizzare lo sguardo. Durante la consulenza scegliamo insieme l'effetto desiderato e verifichiamo che il trattamento sia adatto alle tue esigenze.",
+  "duration": "La seduta dura indicativamente 45–75 minuti, in base al trattamento scelto.",
+  "benefits": [
+    "Valorizzazione della forma naturale di ciglia o sopracciglia.",
+    "Trattamento personalizzabile in base all'effetto desiderato.",
+    "Routine di cura successiva spiegata a fine seduta."
+  ],
+  "faqs": [
+    {
+      "question": "Quanto dura l'effetto?",
+      "answer": "La durata varia in base al ciclo naturale del pelo e alle abitudini di cura; le indicazioni vengono fornite durante l'appuntamento."
+    },
+    {
+      "question": "Posso fare la laminazione se ho occhi sensibili?",
+      "answer": "È importante segnalarlo prima dell'appuntamento. In caso di irritazioni, allergie o condizioni oculari, chiedi prima il parere di un professionista sanitario."
+    },
+    {
+      "question": "Devo prepararmi in modo particolare?",
+      "answer": "Ti verranno comunicate le indicazioni prima della seduta. Presentati senza trucco nella zona da trattare, se possibile."
+    }
+  ],
+  "imageAlt": "Esempio illustrativo di laminazione ciglia e sopracciglia",
+  "placeholderLabel": "Laminazione",
+  "order": 4,
+  "image": ""
+}

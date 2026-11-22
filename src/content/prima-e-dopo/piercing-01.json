@@ -1,0 +1,11 @@
+{
+  "id": "piercing-01",
+  "category": "piercing",
+  "format": "photo",
+  "title": "Piercing",
+  "description": "Immagini del servizio da aggiungere con il consenso delle persone ritratte.",
+  "beforeSrc": "",
+  "afterSrc": "",
+  "alt": "Spazio per una fotografia del servizio piercing",
+  "order": 5
+}

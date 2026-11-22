@@ -1,0 +1,145 @@
+{
+  "brand": {
+    "name": "MAR STUDIO",
+    "displayName": "MAR STUDIO by Marylin Casà",
+    "owner": "Marylin Casà",
+    "descriptor": "Estetica, dermopigmentazione e formazione",
+    "tagline": "La bellezza di sentirti te stessa.",
+    "description": "Trattamenti di dermopigmentazione, cura dello sguardo e percorsi beauty personalizzati da MAR STUDIO by Marylin Casà."
+  },
+  "contact": {
+    "whatsappNumber": "",
+    "phoneDisplay": "",
+    "email": "",
+    "address": {
+      "street": "",
+      "postalCode": "",
+      "locality": "",
+      "province": ""
+    },
+    "openingHours": "Orari e disponibilità vengono concordati al momento della prenotazione.",
+    "web3FormsAccessKey": ""
+  },
+  "social": {
+    "instagramUrl": "",
+    "instagramHandle": "",
+    "mapsSearchUrl": "https://www.google.com/maps/search/?api=1&query=MAR+STUDIO+Marylin+Casa",
+    "mapsEmbedUrl": "https://maps.google.com/maps?q=MAR%20STUDIO%20Marylin%20Casa&output=embed"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Chi sono",
+      "href": "/chi-sono"
+    },
+    {
+      "label": "Trattamenti",
+      "href": "/trattamenti"
+    },
+    {
+      "label": "Academy",
+      "href": "/corsi"
+    },
+    {
+      "label": "Prima e dopo",
+      "href": "/prima-e-dopo"
+    },
+    {
+      "label": "Sieri & Gift Card",
+      "href": "/shop-gift-card"
+    },
+    {
+      "label": "Contatti",
+      "href": "/contatti"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Estetica • Dermopigmentazione • Formazione",
+    "title": "La bellezza di sentirti te stessa.",
+    "description": "Un percorso di bellezza pensato intorno a te: consulenza, ascolto e trattamenti personalizzati per valorizzare i tuoi lineamenti con naturalezza.",
+    "primaryAction": "Prenota una consulenza",
+    "secondaryAction": "Scopri i trattamenti",
+    "imageAlt": "Spazio dedicato ai trattamenti beauty di MAR STUDIO",
+    "imageLabel": "Il tuo momento, la tua bellezza",
+    "image": ""
+  },
+  "about": {
+    "eyebrow": "Piacere, sono Marylin",
+    "title": "La cura dei dettagli, con sensibilità e ascolto.",
+    "image": "",
+    "paragraphs": [
+      "MAR STUDIO nasce dal desiderio di creare uno spazio accogliente, in cui ogni persona possa sentirsi ascoltata e accompagnata nella scelta del trattamento più adatto.",
+      "Credo in una bellezza personale, mai standardizzata. Per questo ogni percorso inizia dal dialogo: valutiamo insieme desideri, caratteristiche e aspettative, con attenzione alla naturalezza e alla cura.",
+      "Qui trovi trattamenti beauty e percorsi formativi presentati con trasparenza. Prima di ogni appuntamento, tutte le informazioni utili vengono condivise durante la consulenza."
+    ]
+  },
+  "stats": [
+    {
+      "label": "Anni di esperienza",
+      "value": null,
+      "suffix": "+"
+    },
+    {
+      "label": "Trattamenti eseguiti",
+      "value": null,
+      "suffix": "+"
+    },
+    {
+      "label": "Riconoscimenti",
+      "value": null,
+      "suffix": ""
+    },
+    {
+      "label": "Allieve formate",
+      "value": null,
+      "suffix": "+"
+    }
+  ],
+  "giftCards": {
+    "amounts": [
+      50,
+      100,
+      150
+    ],
+    "note": "Importi e trattamenti disponibili sono da confermare al momento della richiesta."
+  },
+  "mediaPlaceholders": [
+    {
+      "label": "Trattamenti beauty",
+      "alt": "Spazio in attesa di una fotografia originale dei trattamenti MAR STUDIO",
+      "category": "beauty"
+    },
+    {
+      "label": "Risultati prima e dopo",
+      "alt": "Spazio in attesa di fotografie originali dei risultati, pubblicate con il consenso delle clienti",
+      "category": "risultati"
+    },
+    {
+      "label": "Academy",
+      "alt": "Spazio in attesa di immagini originali dei percorsi formativi MAR STUDIO",
+      "category": "academy"
+    }
+  ],
+  "media": {
+    "studioVideo": {
+      "src": "",
+      "poster": "/images/placeholders/studio-poster.svg",
+      "alt": "Anteprima illustrata del video di presentazione dello studio"
+    }
+  },
+  "conversion": {
+    "title": "Il tuo percorso beauty inizia da una consulenza.",
+    "description": "Raccontami cosa desideri: troveremo insieme il trattamento più adatto e chiariremo tempi, modalità e cura.",
+    "buttonLabel": "Prenota ora",
+    "instagramTitle": "Una bellezza, tante storie.",
+    "instagramDescription": "Segui MAR STUDIO su Instagram per aggiornamenti, lavori e novità dello studio."
+  },
+  "footer": {
+    "note": "Un luogo dedicato alla bellezza, all'ascolto e alla cura dei dettagli.",
+    "privacyLabel": "Privacy",
+    "cookiesLabel": "Cookie policy"
+  }
+}

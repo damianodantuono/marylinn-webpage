@@ -1,0 +1,11 @@
+{
+  "id": "microblading-01",
+  "category": "microblading",
+  "format": "photo",
+  "title": "Microblading",
+  "description": "Immagini dei risultati di microblading da aggiungere con il consenso delle clienti.",
+  "beforeSrc": "",
+  "afterSrc": "",
+  "alt": "Spazio per un risultato di microblading prima e dopo",
+  "order": 2
+}

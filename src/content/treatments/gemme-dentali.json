@@ -1,0 +1,31 @@
+{
+  "slug": "gemme-dentali",
+  "name": "Gemme dentali",
+  "navLabel": "Gemme dentali",
+  "shortDescription": "Un piccolo dettaglio decorativo per il sorriso, preceduto da un confronto sulla fattibilità.",
+  "description": "Le gemme dentali sono un dettaglio decorativo applicato al dente. Prima di fissare l'appuntamento è utile confrontarsi per ricevere informazioni sul servizio e verificare che la situazione orale sia compatibile. Per dubbi sulla salute dentale, il riferimento è sempre il dentista.",
+  "duration": "Durata e disponibilità vengono concordate prima dell'appuntamento.",
+  "benefits": [
+    "Scelta del dettaglio decorativo durante la consulenza.",
+    "Informazioni preventive su applicazione e cura.",
+    "Attenzione alla compatibilità con la situazione orale individuale."
+  ],
+  "faqs": [
+    {
+      "question": "Devo fare una visita prima?",
+      "answer": "Se hai dubbi, sensibilità, problemi gengivali o trattamenti dentali in corso, chiedi prima il parere del tuo dentista."
+    },
+    {
+      "question": "Come si rimuove una gemma dentale?",
+      "answer": "Per informazioni sulla rimozione e sulla salute dello smalto, rivolgiti a un dentista; non tentare di rimuoverla autonomamente."
+    },
+    {
+      "question": "Posso scegliere il design?",
+      "answer": "Sì, le opzioni disponibili e la compatibilità vengono discusse prima di fissare il trattamento."
+    }
+  ],
+  "imageAlt": "Esempio illustrativo di gemma dentale",
+  "placeholderLabel": "Gemme dentali",
+  "order": 6,
+  "image": ""
+}

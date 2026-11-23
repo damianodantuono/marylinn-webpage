@@ -14,50 +14,50 @@ const courses = await getCourses();
 >
   <section class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">MAR STUDIO Academy</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">MAR STUDIO Academy</p>
       <h1 class="mt-4 font-display text-5xl leading-tight sm:text-6xl">Formazione, con attenzione a ogni passaggio.</h1>
-      <p class="mt-5 max-w-2xl text-base leading-8 text-[#625850]">
+      <p class="mt-5 max-w-2xl text-base leading-8 text-[#49273C]">
         Percorsi dedicati a chi desidera avvicinarsi al settore beauty o approfondire le proprie competenze. Programma, calendario e modalità vengono condivisi prima di ogni iscrizione.
       </p>
-      <a class="mt-8 inline-flex rounded-full bg-[#1F1D1B] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#55463A]" href="/contatti">
+      <a class="mt-8 inline-flex rounded-full bg-[#292F3F] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#49273C]" href="/contatti">
         Richiedi informazioni
       </a>
     </div>
     <div
-      class="flex min-h-[350px] items-end rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#E6CDB8_0%,transparent_38%),linear-gradient(145deg,#D8C6B4_0%,#EEE3D7_48%,#B89778_100%)] p-7 sm:min-h-[420px] sm:p-10"
+      class="flex min-h-[350px] items-end rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#F9D6E3_0%,transparent_38%),linear-gradient(145deg,#EFE9E8_0%,#EFE9E8_48%,#AF5A72_100%)] p-7 sm:min-h-[420px] sm:p-10"
       role="img"
       aria-label={site.mediaPlaceholders[2].alt}
     >
-      <p class="rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">Immagini Academy in aggiornamento</p>
+      <p class="rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs">Immagini Academy in aggiornamento</p>
     </div>
   </section>
 
-  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="courses-title">
+  <section class="bg-[#EFE9E8] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="courses-title">
     <div class="mx-auto max-w-7xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">I percorsi</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">I percorsi</p>
       <h2 id="courses-title" class="mt-3 font-display text-4xl sm:text-5xl">Scegli da dove iniziare.</h2>
       <div class="mt-8 grid gap-5 lg:grid-cols-2">
         {courses.map((course) => (
-          <article class="rounded-3xl bg-[#FAF8F5] p-6 sm:p-8">
+          <article class="rounded-3xl bg-[#FFFFFF] p-6 sm:p-8">
             {course.status?.trim() && (
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A684A]">{course.status}</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[#AF5A72]">{course.status}</p>
             )}
             <h3 class="mt-3 font-display text-3xl">{course.title}</h3>
             {course.description?.trim() && (
-              <p class="mt-3 text-sm leading-7 text-[#625850]">{course.description}</p>
+              <p class="mt-3 text-sm leading-7 text-[#49273C]">{course.description}</p>
             )}
             {(course.audience?.trim() || course.duration?.trim()) && (
-              <dl class="mt-6 grid gap-4 border-y border-[#1F1D1B]/10 py-5 sm:grid-cols-2">
+              <dl class="mt-6 grid gap-4 border-y border-[#292F3F]/10 py-5 sm:grid-cols-2">
                 {course.audience?.trim() && (
                   <div>
-                    <dt class="text-xs font-semibold uppercase tracking-wide text-[#76695F]">A chi è rivolto</dt>
-                    <dd class="mt-2 text-sm leading-6 text-[#49433E]">{course.audience}</dd>
+                    <dt class="text-xs font-semibold uppercase tracking-wide text-[#49273C]">A chi è rivolto</dt>
+                    <dd class="mt-2 text-sm leading-6 text-[#49273C]">{course.audience}</dd>
                   </div>
                 )}
                 {course.duration?.trim() && (
                   <div>
-                    <dt class="text-xs font-semibold uppercase tracking-wide text-[#76695F]">Durata</dt>
-                    <dd class="mt-2 text-sm leading-6 text-[#49433E]">{course.duration}</dd>
+                    <dt class="text-xs font-semibold uppercase tracking-wide text-[#49273C]">Durata</dt>
+                    <dd class="mt-2 text-sm leading-6 text-[#49273C]">{course.duration}</dd>
                   </div>
                 )}
               </dl>
@@ -67,18 +67,18 @@ const courses = await getCourses();
                 <h4 class="mt-5 text-sm font-semibold">Programma indicativo</h4>
                 <ul class="mt-3 space-y-2">
               {course.programme.filter((topic) => topic.trim()).map((topic) => (
-                <li class="flex gap-2 text-sm leading-6 text-[#625850]">
-                  <span class="text-[#9A744E]" aria-hidden="true">·</span><span>{topic}</span>
+                <li class="flex gap-2 text-sm leading-6 text-[#49273C]">
+                  <span class="text-[#AF5A72]" aria-hidden="true">·</span><span>{topic}</span>
                 </li>
               ))}
                 </ul>
               </>
             )}
             {course.kit?.trim() && (
-              <p class="mt-5 text-xs leading-6 text-[#76695F]"><strong>Kit e materiali:</strong> {course.kit}</p>
+              <p class="mt-5 text-xs leading-6 text-[#49273C]"><strong>Kit e materiali:</strong> {course.kit}</p>
             )}
             <a
-              class="mt-6 inline-flex rounded-full border border-[#1F1D1B]/20 px-5 py-3 text-sm font-semibold transition-colors hover:bg-[#F2ECE4]"
+              class="mt-6 inline-flex rounded-full border border-[#292F3F]/20 px-5 py-3 text-sm font-semibold transition-colors hover:bg-[#EFE9E8]"
               href={`/contatti?corso=${course.slug}`}
             >
               Chiedi programma e disponibilità
@@ -92,9 +92,9 @@ const courses = await getCourses();
   <section class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="certificates-title">
     <div class="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-center">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Attestati</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Attestati</p>
         <h2 id="certificates-title" class="mt-3 font-display text-4xl">Un ricordo del tuo percorso.</h2>
-        <p class="mt-4 text-sm leading-7 text-[#625850]">
+        <p class="mt-4 text-sm leading-7 text-[#49273C]">
           Gli attestati e i dettagli di rilascio saranno specificati nella scheda di ciascun corso, prima dell'iscrizione.
         </p>
       </div>
@@ -106,12 +106,12 @@ const courses = await getCourses();
         </div>
       ) : (
         <div
-          class="flex min-h-64 items-center justify-center rounded-3xl border border-[#B89778]/40 bg-[linear-gradient(145deg,#F2ECE4,#E7D7C8)] p-8 text-center"
+          class="flex min-h-64 items-center justify-center rounded-3xl border border-[#AF5A72]/40 bg-[linear-gradient(145deg,#EFE9E8,#EFE9E8)] p-8 text-center"
           role="img"
           aria-label="Spazio grafico in attesa di attestati verificati dei corsi"
         >
-          <div class="rounded-2xl border border-[#8A684A]/40 bg-[#FAF8F5]/75 px-8 py-10">
-            <p class="text-xs uppercase tracking-[0.2em] text-[#8A684A]">MAR STUDIO Academy</p>
+          <div class="rounded-2xl border border-[#AF5A72]/40 bg-[#FFFFFF]/75 px-8 py-10">
+            <p class="text-xs uppercase tracking-[0.2em] text-[#AF5A72]">MAR STUDIO Academy</p>
             <p class="mt-3 font-display text-3xl">Attestati in aggiornamento</p>
           </div>
         </div>

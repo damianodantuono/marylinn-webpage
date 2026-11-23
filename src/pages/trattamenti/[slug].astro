@@ -31,43 +31,43 @@ const pageDescription = service.slug === "piercing"
   description={pageDescription}
   whatsappMessage={`Ciao Marylin, vorrei informazioni sul trattamento ${service.name}.`}
 >
-  <nav class="mx-auto max-w-7xl px-5 pt-6 text-xs text-[#76695F] sm:px-8" aria-label="Percorso di navigazione">
-    <a class="hover:text-[#8A684A]" href="/">Home</a>
+  <nav class="mx-auto max-w-7xl px-5 pt-6 text-xs text-[#49273C] sm:px-8" aria-label="Percorso di navigazione">
+    <a class="hover:text-[#AF5A72]" href="/">Home</a>
     <span class="mx-2" aria-hidden="true">/</span>
-    <a class="hover:text-[#8A684A]" href="/trattamenti">Trattamenti</a>
+    <a class="hover:text-[#AF5A72]" href="/trattamenti">Trattamenti</a>
     <span class="mx-2" aria-hidden="true">/</span>
     <span aria-current="page">{service.navLabel?.trim() || service.name}</span>
   </nav>
 
   <section class="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1fr_0.9fr] lg:items-center">
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Trattamenti MAR STUDIO</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Trattamenti MAR STUDIO</p>
       <h1 class="mt-4 font-display text-5xl leading-tight sm:text-6xl">
         {service.slug === "piercing" ? `Piercing${piercingLocation ? ` a ${piercingLocation}` : " presso MAR STUDIO"}` : service.name}
       </h1>
       {(service.slug === "piercing" || service.shortDescription?.trim()) && (
-        <p class="mt-5 max-w-2xl text-base leading-8 text-[#625850]">
+        <p class="mt-5 max-w-2xl text-base leading-8 text-[#49273C]">
           {service.slug === "piercing"
             ? "Ogni appuntamento per piercing inizia con una consulenza. Contatta MAR STUDIO by Marylin Casà per verificare disponibilità, indirizzo e informazioni sul servizio."
             : service.shortDescription}
         </p>
       )}
       <a
-        class="mt-8 inline-flex rounded-full bg-[#1F1D1B] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#55463A]"
+        class="mt-8 inline-flex rounded-full bg-[#292F3F] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#49273C]"
         href="/contatti"
       >
         Prenota una consulenza
       </a>
     </div>
     <div
-      class="relative flex min-h-[330px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#E6CDB8_0%,transparent_38%),linear-gradient(145deg,#D8C6B4_0%,#EEE3D7_48%,#B89778_100%)] p-7 sm:min-h-[420px] sm:p-10"
+      class="relative flex min-h-[330px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#F9D6E3_0%,transparent_38%),linear-gradient(145deg,#EFE9E8_0%,#EFE9E8_48%,#AF5A72_100%)] p-7 sm:min-h-[420px] sm:p-10"
       role="img"
       aria-label={service.imageAlt?.trim() || service.name}
     >
       {service.image ? (
         <img class="absolute inset-0 h-full w-full object-cover" src={service.image} alt={service.imageAlt?.trim() || service.name} />
       ) : (
-        <p class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs text-[#51463E]">
+        <p class="relative rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs text-[#49273C]">
           {service.placeholderLabel?.trim() || "Fotografia del trattamento in aggiornamento"}
         </p>
       )}
@@ -75,17 +75,17 @@ const pageDescription = service.slug === "piercing"
   </section>
 
   {(service.description?.trim() || service.duration?.trim()) && (
-  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="description-title">
+  <section class="bg-[#EFE9E8] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="description-title">
     <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_0.8fr]">
       {service.description?.trim() && <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Il trattamento</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Il trattamento</p>
         <h2 id="description-title" class="mt-3 font-display text-4xl">Un progetto costruito insieme.</h2>
-        <p class="mt-5 text-sm leading-7 text-[#625850]">{service.description}</p>
+        <p class="mt-5 text-sm leading-7 text-[#49273C]">{service.description}</p>
       </div>}
-      {service.duration?.trim() && <aside class="rounded-3xl bg-[#FAF8F5] p-6 sm:p-8">
+      {service.duration?.trim() && <aside class="rounded-3xl bg-[#FFFFFF] p-6 sm:p-8">
         <h2 class="font-display text-2xl">Durata e modalità</h2>
-        <p class="mt-3 text-sm leading-7 text-[#625850]">{service.duration}</p>
-        <p class="mt-4 text-xs leading-6 text-[#76695F]">
+        <p class="mt-3 text-sm leading-7 text-[#49273C]">{service.duration}</p>
+        <p class="mt-4 text-xs leading-6 text-[#49273C]">
           La valutazione è individuale. Prima di procedere, condividi eventuali allergie, condizioni cutanee o trattamenti in corso.
         </p>
       </aside>}
@@ -96,46 +96,46 @@ const pageDescription = service.slug === "piercing"
   <section class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="benefits-title">
     <div class="grid gap-10 md:grid-cols-2">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Il percorso</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Il percorso</p>
         <h2 id="benefits-title" class="mt-3 font-display text-4xl">Cosa aspettarti.</h2>
         {service.benefits?.some((benefit) => benefit.trim()) && <ul class="mt-6 space-y-4">
           {service.benefits.filter((benefit) => benefit.trim()).map((benefit) => (
-            <li class="flex gap-3 text-sm leading-6 text-[#625850]">
-              <span class="mt-0.5 text-[#9A744E]" aria-hidden="true">✦</span>
+            <li class="flex gap-3 text-sm leading-6 text-[#49273C]">
+              <span class="mt-0.5 text-[#AF5A72]" aria-hidden="true">✦</span>
               <span>{benefit}</span>
             </li>
           ))}
         </ul>}
       </div>
-      <div class="rounded-3xl bg-[#F2ECE4] p-6 sm:p-8">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Prima di prenotare</p>
+      <div class="rounded-3xl bg-[#EFE9E8] p-6 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Prima di prenotare</p>
         <h2 class="mt-3 font-display text-3xl">La consulenza è il primo passo.</h2>
-        <p class="mt-4 text-sm leading-7 text-[#625850]">
+        <p class="mt-4 text-sm leading-7 text-[#49273C]">
           Parleremo del risultato che desideri, delle caratteristiche individuali e di ogni indicazione utile per decidere con serenità.
         </p>
-        <a class="mt-6 inline-flex text-sm font-semibold underline decoration-[#B89778] underline-offset-4" href="/contatti">
+        <a class="mt-6 inline-flex text-sm font-semibold underline decoration-[#AF5A72] underline-offset-4" href="/contatti">
           Scrivici per informazioni <span class="ml-2" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="gallery-title">
+  <section class="bg-[#EFE9E8] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="gallery-title">
     <div class="mx-auto max-w-7xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Galleria</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Galleria</p>
       <h2 id="gallery-title" class="mt-3 font-display text-4xl">Dettagli da scoprire.</h2>
-      <p class="mt-4 max-w-2xl text-sm leading-7 text-[#625850]">
+      <p class="mt-4 max-w-2xl text-sm leading-7 text-[#49273C]">
         Le immagini originali saranno pubblicate dopo la selezione dei materiali e con il consenso delle persone ritratte.
       </p>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {relatedMedia.length > 0 ? relatedMedia.map((item, index) => (
-          <div class="overflow-hidden rounded-3xl bg-[#FAF8F5]">
+          <div class="overflow-hidden rounded-3xl bg-[#FFFFFF]">
             <div
               class:list={[
                 "relative flex aspect-[1.2] items-end overflow-hidden p-5",
                 index % 2 === 0
-                  ? "bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)]"
-                  : "bg-[linear-gradient(145deg,#E8E2D9,#B6A89A)]",
+                  ? "bg-[linear-gradient(145deg,#EFE9E8,#B7C3DB)]"
+                  : "bg-[linear-gradient(145deg,#B7C3DB,#B7C3DB)]",
               ]}
               role="img"
               aria-label={item.alt?.trim() || item.title?.trim() || `Risultato ${service.name}`}
@@ -148,38 +148,38 @@ const pageDescription = service.slug === "piercing"
                   Il tuo browser non supporta la riproduzione video.
                 </video>
               ) : (
-                <span class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">
+                <span class="relative rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs">
                   {item.format === "video" ? "Video in aggiornamento" : "Immagine in aggiornamento"}
                 </span>
               )}
             </div>
-            {item.title?.trim() && <p class="p-4 text-sm text-[#625850]">{item.title}</p>}
+            {item.title?.trim() && <p class="p-4 text-sm text-[#49273C]">{item.title}</p>}
           </div>
         )) : (
-          <div class="flex aspect-[1.2] items-end rounded-3xl bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)] p-5" role="img" aria-label={service.imageAlt?.trim() || service.name}>
-            <span class="rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">Immagini in aggiornamento</span>
+          <div class="flex aspect-[1.2] items-end rounded-3xl bg-[linear-gradient(145deg,#EFE9E8,#B7C3DB)] p-5" role="img" aria-label={service.imageAlt?.trim() || service.name}>
+            <span class="rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs">Immagini in aggiornamento</span>
           </div>
         )}
       </div>
-      <a class="mt-7 inline-flex text-sm font-semibold underline decoration-[#B89778] underline-offset-4" href="/prima-e-dopo">
+      <a class="mt-7 inline-flex text-sm font-semibold underline decoration-[#AF5A72] underline-offset-4" href="/prima-e-dopo">
         Guarda la galleria completa <span class="ml-2" aria-hidden="true">↗</span>
       </a>
     </div>
   </section>
 
   {service.faqs?.some((faq) => faq.question?.trim() && faq.answer?.trim()) && <section class="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="faq-title">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Dubbi frequenti</p>
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Dubbi frequenti</p>
     <h2 id="faq-title" class="mt-3 font-display text-4xl">Domande e risposte.</h2>
-    <div class="mt-7 divide-y divide-[#1F1D1B]/10">
+    <div class="mt-7 divide-y divide-[#292F3F]/10">
       {service.faqs
         .filter((faq) => faq.question?.trim() && faq.answer?.trim())
         .map((faq) => (
         <details class="py-5">
-          <summary class="cursor-pointer list-none pr-6 font-semibold text-[#302B27] marker:hidden">
+          <summary class="cursor-pointer list-none pr-6 font-semibold text-[#49273C] marker:hidden">
             {faq.question}
-            <span class="float-right text-[#8A684A]" aria-hidden="true">＋</span>
+            <span class="float-right text-[#AF5A72]" aria-hidden="true">＋</span>
           </summary>
-          <p class="mt-3 max-w-3xl text-sm leading-7 text-[#625850]">{faq.answer}</p>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-[#49273C]">{faq.answer}</p>
         </details>
       ))}
     </div>

@@ -28,9 +28,11 @@ const pageTitle =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     {description?.trim() && <meta name="description" content={description} />}
-    <meta name="theme-color" content="#FAF8F5" />
+    <meta name="theme-color" content="#FFFFFF" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <link rel="icon" type="image/png" href="/images/brand/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/brand/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
@@ -39,7 +41,7 @@ const pageTitle =
     />
     <slot name="head" />
   </head>
-  <body class="min-h-screen bg-[#FAF8F5] font-sans text-[#1F1D1B] antialiased">
+  <body class="min-h-screen bg-white font-sans text-[#292F3F] antialiased">
     <Navbar />
     <main>
       <slot />

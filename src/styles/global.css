@@ -3,6 +3,13 @@
 @theme {
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", Inter, sans-serif;
+  --color-mar-ink: #292f3f;
+  --color-mar-plum: #49273c;
+  --color-mar-rose: #af5a72;
+  --color-mar-blue: #b7c3db;
+  --color-mar-pink: #f9d6e3;
+  --color-mar-stone: #efe9e8;
+  --color-mar-white: #ffffff;
 }
 
 html {
@@ -11,6 +18,26 @@ html {
 
 body {
   margin: 0;
+}
+
+[data-home-header][data-scrolled="true"] {
+  position: fixed;
+  inset: 0 0 auto;
+  border-color: rgb(41 47 63 / 10%);
+  background-color: rgb(255 255 255 / 95%);
+  color: var(--color-mar-ink);
+}
+
+[data-home-header] [data-logo-dark] {
+  display: none;
+}
+
+[data-home-header][data-scrolled="true"] [data-logo-light] {
+  display: none;
+}
+
+[data-home-header][data-scrolled="true"] [data-logo-dark] {
+  display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {

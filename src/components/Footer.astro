@@ -5,20 +5,24 @@ const site = await getStudio();
 const whatsappUrl = getWhatsAppUrl(site);
 ---
 
-<footer class="bg-[#1F1D1B] text-[#FAF8F5]">
+<footer class="bg-[#49273C] text-white">
   <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-4">
     <div class="lg:col-span-2">
-      <a class="font-display text-3xl tracking-[0.12em]" href="/">
-        {site.brand.name}
+      <a class="inline-block" href="/" aria-label={`${site.brand.displayName}, home`}>
+        <img
+          class="w-40"
+          src="/images/brand/logo-light.png"
+          alt={site.brand.displayName}
+          loading="lazy"
+        />
       </a>
-      <p class="mt-1 text-xs tracking-[0.18em] text-[#C5A880]">BY MARYLIN CASÀ</p>
       {site.footer.note?.trim() && (
         <p class="mt-5 max-w-sm text-sm leading-7 text-white/65">{site.footer.note}</p>
       )}
     </div>
 
     <div>
-      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A880]">
+      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#B7C3DB]">
         Esplora
       </h2>
       <ul class="mt-4 space-y-3 text-sm text-white/70">
@@ -31,7 +35,7 @@ const whatsappUrl = getWhatsAppUrl(site);
     </div>
 
     <div>
-      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A880]">
+      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-[#B7C3DB]">
         Contatti
       </h2>
       <address class="mt-4 space-y-3 text-sm not-italic leading-6 text-white/70">

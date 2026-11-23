@@ -4,23 +4,43 @@ import { getStudio, getTreatments } from "@/lib/content";
 const site = await getStudio();
 const treatments = await getTreatments();
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isHome = currentPath === "/";
 const isCurrent = (href: string) =>
   href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
 ---
 
-<header class="sticky top-0 z-40 border-b border-[#1F1D1B]/10 bg-[#FAF8F5]/95 backdrop-blur">
+<header
+  class:list={[
+    "z-40 w-full border-b backdrop-blur transition-colors duration-300",
+    isHome
+      ? "absolute inset-x-0 top-0 border-transparent bg-transparent text-white"
+      : "sticky top-0 border-[#292F3F]/10 bg-white/95 text-[#292F3F]",
+  ]}
+  data-home-header={isHome ? "true" : undefined}
+>
   <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-    <a class="group flex flex-col leading-none" href="/" aria-label={`${site.brand.displayName}, home`}>
-      <span class="font-display text-2xl tracking-[0.12em]">{site.brand.name}</span>
-      <span class="mt-1 text-[0.6rem] tracking-[0.18em] text-[#76695F]">BY MARYLIN CASÀ</span>
+    <a class="group block" href="/" aria-label={`${site.brand.displayName}, home`}>
+      <img
+        class:list={["w-28 sm:w-32", !isHome && "hidden"]}
+        src="/images/brand/logo-light.png"
+        alt={site.brand.displayName}
+        data-logo-light
+      />
+      <img
+        class:list={["w-28 sm:w-32", isHome && "hidden"]}
+        src="/images/brand/logo-dark.png"
+        alt=""
+        aria-hidden="true"
+        data-logo-dark
+      />
     </a>
 
     <nav class="hidden items-center gap-6 lg:flex" aria-label="Navigazione principale">
       {site.navigation.filter((item) => item.href !== "/trattamenti").map((item) => (
         <a
           class:list={[
-            "text-sm transition-colors hover:text-[#8A684A]",
-            isCurrent(item.href) ? "text-[#8A684A]" : "text-[#49433E]",
+            "text-sm transition-colors hover:text-[#AF5A72]",
+            isCurrent(item.href) ? "text-[#AF5A72]" : "text-current",
           ]}
           href={item.href}
           aria-current={isCurrent(item.href) ? "page" : undefined}
@@ -29,13 +49,13 @@ const isCurrent = (href: string) =>
         </a>
       ))}
       <details class="group relative">
-        <summary class="cursor-pointer list-none text-sm text-[#49433E] transition-colors hover:text-[#8A684A]">
+        <summary class="cursor-pointer list-none text-sm text-current transition-colors hover:text-[#AF5A72]">
           Trattamenti <span aria-hidden="true" class="ml-1">⌄</span>
         </summary>
-        <div class="absolute right-0 top-full mt-3 min-w-56 rounded-2xl border border-[#1F1D1B]/10 bg-[#FAF8F5] p-2 shadow-xl">
+        <div class="absolute right-0 top-full mt-3 min-w-56 rounded-2xl border border-[#292F3F]/10 bg-white p-2 text-[#292F3F] shadow-xl">
           {treatments.map((service) => (
             <a
-              class="block rounded-xl px-4 py-2.5 text-sm text-[#49433E] transition-colors hover:bg-[#F2ECE4] hover:text-[#8A684A]"
+              class="block rounded-xl px-4 py-2.5 text-sm text-[#49273C] transition-colors hover:bg-[#EFE9E8] hover:text-[#AF5A72]"
               href={`/trattamenti/${service.slug}`}
             >
               {service.navLabel?.trim() || service.name}
@@ -46,25 +66,25 @@ const isCurrent = (href: string) =>
     </nav>
 
     <a
-      class="hidden rounded-full bg-[#1F1D1B] px-5 py-3 text-xs font-semibold tracking-wide text-white transition-colors hover:bg-[#55463A] lg:inline-flex"
+      class="hidden rounded-full bg-[#AF5A72] px-5 py-3 text-xs font-semibold tracking-wide text-white transition-colors hover:bg-[#49273C] lg:inline-flex"
       href="/contatti"
     >
       Prenota una consulenza
     </a>
 
     <details class="relative lg:hidden">
-      <summary class="cursor-pointer list-none rounded-full border border-[#1F1D1B]/15 px-4 py-2 text-sm">
+      <summary class="cursor-pointer list-none rounded-full border border-current/20 px-4 py-2 text-sm">
         Menu <span aria-hidden="true" class="ml-1">⌄</span>
       </summary>
       <nav
-        class="absolute right-0 top-full mt-3 flex max-h-[75vh] min-w-64 flex-col overflow-y-auto rounded-2xl border border-[#1F1D1B]/10 bg-[#FAF8F5] p-3 shadow-xl"
+        class="absolute right-0 top-full mt-3 flex max-h-[75vh] min-w-64 flex-col overflow-y-auto rounded-2xl border border-[#292F3F]/10 bg-white p-3 text-[#292F3F] shadow-xl"
         aria-label="Navigazione mobile"
       >
         {site.navigation.map((item) => (
           <a
             class:list={[
-              "rounded-xl px-4 py-3 text-sm transition-colors hover:bg-[#F2ECE4]",
-              isCurrent(item.href) ? "text-[#8A684A]" : "text-[#49433E]",
+              "rounded-xl px-4 py-3 text-sm transition-colors hover:bg-[#EFE9E8]",
+              isCurrent(item.href) ? "text-[#AF5A72]" : "text-[#49273C]",
             ]}
             href={item.href}
             aria-current={isCurrent(item.href) ? "page" : undefined}
@@ -72,10 +92,10 @@ const isCurrent = (href: string) =>
             {item.label}
           </a>
         ))}
-        <div class="my-2 border-t border-[#1F1D1B]/10"></div>
+        <div class="my-2 border-t border-[#292F3F]/10"></div>
         {treatments.map((service) => (
           <a
-            class="rounded-xl px-4 py-2.5 text-sm text-[#76695F] transition-colors hover:bg-[#F2ECE4]"
+            class="rounded-xl px-4 py-2.5 text-sm text-[#49273C]/75 transition-colors hover:bg-[#EFE9E8]"
             href={`/trattamenti/${service.slug}`}
           >
             {service.navLabel?.trim() || service.name}
@@ -85,3 +105,16 @@ const isCurrent = (href: string) =>
     </details>
   </div>
 </header>
+
+<script>
+  const homeHeader = document.querySelector<HTMLElement>("[data-home-header]");
+
+  if (homeHeader) {
+    const updateHeader = () => {
+      homeHeader.dataset.scrolled = String(window.scrollY > 24);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  }
+</script>

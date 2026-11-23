@@ -21,22 +21,22 @@ const whatsappUrl = getWhatsAppUrl(
   description="Contatta MAR STUDIO by Marylin Casà per informazioni e appuntamenti. Consulta la mappa e richiedi di essere ricontattata."
 >
   <section class="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16" aria-labelledby="location-title">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Dove siamo</p>
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Dove siamo</p>
     <h1 id="location-title" class="mt-3 font-display text-5xl sm:text-6xl">Vieni a trovarci.</h1>
-    <p class="mt-4 max-w-2xl text-base leading-8 text-[#625850]">
+    <p class="mt-4 max-w-2xl text-base leading-8 text-[#49273C]">
       Per raggiungere lo studio, consulta la mappa e chiedi conferma dell'indirizzo e della disponibilità prima di partire.
     </p>
-    <div class="mt-8 grid gap-6 rounded-[2rem] border border-[#1F1D1B]/10 bg-white/60 p-5 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+    <div class="mt-8 grid gap-6 rounded-[2rem] border border-[#292F3F]/10 bg-white/60 p-5 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
       <div class="p-2 sm:p-4">
         <h2 class="font-display text-3xl">MAR STUDIO by Marylin Casà</h2>
         {addressParts.length > 0 ? (
-          <address class="mt-4 text-sm not-italic leading-7 text-[#625850]">{addressParts.join(", ")}</address>
+          <address class="mt-4 text-sm not-italic leading-7 text-[#49273C]">{addressParts.join(", ")}</address>
         ) : (
-          <p class="mt-4 text-sm leading-7 text-[#625850]">L'indirizzo completo sarà aggiunto non appena confermato.</p>
+          <p class="mt-4 text-sm leading-7 text-[#49273C]">L'indirizzo completo sarà aggiunto non appena confermato.</p>
         )}
-        <p class="mt-3 text-sm leading-7 text-[#625850]">{site.contact.openingHours}</p>
+        <p class="mt-3 text-sm leading-7 text-[#49273C]">{site.contact.openingHours}</p>
         <a
-          class="mt-6 inline-flex rounded-full bg-[#1F1D1B] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#55463A]"
+          class="mt-6 inline-flex rounded-full bg-[#292F3F] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#49273C]"
           href={site.social.mapsSearchUrl}
           target="_blank"
           rel="noreferrer"
@@ -45,7 +45,7 @@ const whatsappUrl = getWhatsAppUrl(
         </a>
       </div>
       <iframe
-        class="h-72 w-full rounded-2xl border-0 bg-[#F2ECE4] sm:h-96"
+        class="h-72 w-full rounded-2xl border-0 bg-[#EFE9E8] sm:h-96"
         src={site.social.mapsEmbedUrl}
         title="Mappa per cercare MAR STUDIO by Marylin Casà"
         loading="lazy"
@@ -54,42 +54,42 @@ const whatsappUrl = getWhatsAppUrl(
     </div>
   </section>
 
-  <section class="bg-[#F2ECE4] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="contact-options-title">
+  <section class="bg-[#EFE9E8] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="contact-options-title">
     <div class="mx-auto max-w-7xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Contatti rapidi</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Contatti rapidi</p>
       <h2 id="contact-options-title" class="mt-3 font-display text-4xl">Siamo qui per aiutarti.</h2>
       <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {whatsappUrl ? (
-          <a class="rounded-2xl bg-[#FAF8F5] p-6 transition-transform hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
+          <a class="rounded-2xl bg-[#FFFFFF] p-6 transition-transform hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
             <h3 class="font-display text-2xl">WhatsApp</h3>
-            <p class="mt-2 text-sm leading-6 text-[#625850]">Scrivi per informazioni e appuntamenti.</p>
+            <p class="mt-2 text-sm leading-6 text-[#49273C]">Scrivi per informazioni e appuntamenti.</p>
           </a>
         ) : (
-          <div class="rounded-2xl bg-[#FAF8F5] p-6">
+          <div class="rounded-2xl bg-[#FFFFFF] p-6">
             <h3 class="font-display text-2xl">WhatsApp</h3>
-            <p class="mt-2 text-sm leading-6 text-[#625850]">Il numero di contatto sarà aggiunto appena confermato.</p>
+            <p class="mt-2 text-sm leading-6 text-[#49273C]">Il numero di contatto sarà aggiunto appena confermato.</p>
           </div>
         )}
         {site.contact.phoneDisplay ? (
-          <a class="rounded-2xl bg-[#FAF8F5] p-6 transition-transform hover:-translate-y-1" href={`tel:${site.contact.phoneDisplay}`}>
+          <a class="rounded-2xl bg-[#FFFFFF] p-6 transition-transform hover:-translate-y-1" href={`tel:${site.contact.phoneDisplay}`}>
             <h3 class="font-display text-2xl">Telefono</h3>
-            <p class="mt-2 text-sm leading-6 text-[#625850]">{site.contact.phoneDisplay}</p>
+            <p class="mt-2 text-sm leading-6 text-[#49273C]">{site.contact.phoneDisplay}</p>
           </a>
         ) : (
-          <div class="rounded-2xl bg-[#FAF8F5] p-6">
+          <div class="rounded-2xl bg-[#FFFFFF] p-6">
             <h3 class="font-display text-2xl">Telefono</h3>
-            <p class="mt-2 text-sm leading-6 text-[#625850]">Il recapito telefonico sarà aggiunto appena confermato.</p>
+            <p class="mt-2 text-sm leading-6 text-[#49273C]">Il recapito telefonico sarà aggiunto appena confermato.</p>
           </div>
         )}
         {site.contact.email ? (
-          <a class="rounded-2xl bg-[#FAF8F5] p-6 transition-transform hover:-translate-y-1" href={`mailto:${site.contact.email}`}>
+          <a class="rounded-2xl bg-[#FFFFFF] p-6 transition-transform hover:-translate-y-1" href={`mailto:${site.contact.email}`}>
             <h3 class="font-display text-2xl">Email</h3>
-            <p class="mt-2 text-sm leading-6 text-[#625850]">{site.contact.email}</p>
+            <p class="mt-2 text-sm leading-6 text-[#49273C]">{site.contact.email}</p>
           </a>
         ) : (
-          <div class="rounded-2xl bg-[#FAF8F5] p-6">
+          <div class="rounded-2xl bg-[#FFFFFF] p-6">
             <h3 class="font-display text-2xl">Email</h3>
-            <p class="mt-2 text-sm leading-6 text-[#625850]">L'indirizzo email sarà aggiunto appena confermato.</p>
+            <p class="mt-2 text-sm leading-6 text-[#49273C]">L'indirizzo email sarà aggiunto appena confermato.</p>
           </div>
         )}
       </div>
@@ -97,14 +97,14 @@ const whatsappUrl = getWhatsAppUrl(
   </section>
 
   <section class="mx-auto max-w-4xl px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="contact-form-title">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Ricontatto</p>
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Ricontatto</p>
     <h2 id="contact-form-title" class="mt-3 font-display text-4xl">Preferisci essere ricontattata?</h2>
-    <p class="mt-4 text-sm leading-7 text-[#625850]">
+    <p class="mt-4 text-sm leading-7 text-[#49273C]">
       Compila il modulo con i tuoi recapiti e il servizio di interesse. I dati saranno usati per rispondere alla tua richiesta.
     </p>
 
     {!site.contact.web3FormsAccessKey && (
-      <p class="mt-6 rounded-2xl border border-[#B89778]/40 bg-[#F2ECE4] p-5 text-sm leading-6 text-[#51463E]" role="status">
+      <p class="mt-6 rounded-2xl border border-[#AF5A72]/40 bg-[#EFE9E8] p-5 text-sm leading-6 text-[#49273C]" role="status">
         Il modulo è in configurazione e non invia ancora i dati. Sarà attivato dopo l'inserimento della chiave Web3Forms nelle impostazioni dello studio.
       </p>
     )}
@@ -116,19 +116,19 @@ const whatsappUrl = getWhatsAppUrl(
         <legend class="sr-only">I tuoi recapiti</legend>
         <label class="block text-sm font-medium">
           Nome
-          <input class="mt-2 w-full rounded-xl border border-[#1F1D1B]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#B89778]" type="text" name="name" autocomplete="name" required />
+          <input class="mt-2 w-full rounded-xl border border-[#292F3F]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#AF5A72]" type="text" name="name" autocomplete="name" required />
         </label>
         <label class="block text-sm font-medium">
           Email
-          <input class="mt-2 w-full rounded-xl border border-[#1F1D1B]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#B89778]" type="email" name="email" autocomplete="email" required />
+          <input class="mt-2 w-full rounded-xl border border-[#292F3F]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#AF5A72]" type="email" name="email" autocomplete="email" required />
         </label>
         <label class="block text-sm font-medium">
           Telefono
-          <input class="mt-2 w-full rounded-xl border border-[#1F1D1B]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#B89778]" type="tel" name="phone" autocomplete="tel" />
+          <input class="mt-2 w-full rounded-xl border border-[#292F3F]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#AF5A72]" type="tel" name="phone" autocomplete="tel" />
         </label>
         <label class="block text-sm font-medium">
           Servizio di interesse
-          <select class="mt-2 w-full rounded-xl border border-[#1F1D1B]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#B89778]" name="service" required>
+          <select class="mt-2 w-full rounded-xl border border-[#292F3F]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#AF5A72]" name="service" required>
             <option value="">Seleziona un servizio</option>
             {treatments.map((service) => <option value={service.name}>{service.name}</option>)}
             <option value="Formazione">Corsi e formazione</option>
@@ -138,22 +138,22 @@ const whatsappUrl = getWhatsAppUrl(
         </label>
         <label class="block text-sm font-medium sm:col-span-2">
           Messaggio
-          <textarea class="mt-2 min-h-36 w-full rounded-xl border border-[#1F1D1B]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#B89778]" name="message" rows="5" required></textarea>
+          <textarea class="mt-2 min-h-36 w-full rounded-xl border border-[#292F3F]/15 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#AF5A72]" name="message" rows="5" required></textarea>
         </label>
-        <label class="flex gap-3 text-xs leading-5 text-[#625850] sm:col-span-2">
-          <input class="mt-1 accent-[#8A684A]" type="checkbox" name="consent" value="accepted" required />
+        <label class="flex gap-3 text-xs leading-5 text-[#49273C] sm:col-span-2">
+          <input class="mt-1 accent-[#AF5A72]" type="checkbox" name="consent" value="accepted" required />
           <span>Acconsento al trattamento dei dati necessari per ricevere risposta alla mia richiesta e dichiaro di aver letto l'informativa privacy.</span>
         </label>
       </fieldset>
       <button
-        class="rounded-full bg-[#1F1D1B] px-6 py-4 text-sm font-semibold text-white transition-colors enabled:hover:bg-[#55463A] disabled:cursor-not-allowed disabled:opacity-50"
+        class="rounded-full bg-[#292F3F] px-6 py-4 text-sm font-semibold text-white transition-colors enabled:hover:bg-[#49273C] disabled:cursor-not-allowed disabled:opacity-50"
         type="submit"
         disabled={!site.contact.web3FormsAccessKey}
       >
         Invia la richiesta
       </button>
-      <p class="text-xs text-[#76695F]">
-        <a class="underline decoration-[#B89778] underline-offset-4" href="/privacy-policy">Leggi l'informativa privacy</a>.
+      <p class="text-xs text-[#49273C]">
+        <a class="underline decoration-[#AF5A72] underline-offset-4" href="/privacy-policy">Leggi l'informativa privacy</a>.
       </p>
     </form>
   </section>

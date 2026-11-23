@@ -11,25 +11,25 @@ const treatments = await getTreatments();
   description="Scopri i trattamenti di dermopigmentazione, microblading, laminazione, lentiggini, piercing e gemme dentali di MAR STUDIO."
 >
   <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">Il catalogo</p>
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Il catalogo</p>
     <h1 class="mt-3 max-w-3xl font-display text-5xl leading-tight sm:text-6xl">Trattamenti pensati intorno a te.</h1>
-    <p class="mt-5 max-w-2xl text-base leading-8 text-[#625850]">
+    <p class="mt-5 max-w-2xl text-base leading-8 text-[#49273C]">
       Ogni percorso comincia dal dialogo. Scopri i servizi, le modalità e le domande più frequenti; durante la consulenza valuteremo insieme il trattamento più adatto alle tue esigenze.
     </p>
     <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {treatments.map((service, index) => (
         <a
-          class="group overflow-hidden rounded-3xl border border-[#1F1D1B]/10 bg-white/60 transition-transform hover:-translate-y-1"
+          class="group overflow-hidden rounded-3xl border border-[#292F3F]/10 bg-white/60 transition-transform hover:-translate-y-1"
           href={`/trattamenti/${service.slug}`}
         >
           <div
             class:list={[
               "relative flex aspect-[1.5] items-end overflow-hidden p-5",
               index % 3 === 0
-                ? "bg-[linear-gradient(140deg,#E7D7C8,#C7A98C)]"
+                ? "bg-[linear-gradient(140deg,#EFE9E8,#B7C3DB)]"
                 : index % 3 === 1
-                  ? "bg-[linear-gradient(140deg,#E8E2D9,#B6A89A)]"
-                  : "bg-[linear-gradient(140deg,#E9D7D1,#C79D8F)]",
+                  ? "bg-[linear-gradient(140deg,#B7C3DB,#B7C3DB)]"
+                  : "bg-[linear-gradient(140deg,#F9D6E3,#AF5A72)]",
             ]}
             role="img"
             aria-label={service.imageAlt?.trim() || service.name}
@@ -37,15 +37,24 @@ const treatments = await getTreatments();
             {service.image ? (
               <img class="absolute inset-0 h-full w-full object-cover" src={service.image} alt={service.imageAlt?.trim() || service.name} loading="lazy" />
             ) : (
-              <span class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">{service.placeholderLabel?.trim() || service.name}</span>
+              <>
+                <img
+                  class="pointer-events-none absolute right-4 top-4 h-10 w-auto opacity-50"
+                  src="/images/brand/monogramma.png"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+                <span class="relative rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs">{service.placeholderLabel?.trim() || service.name}</span>
+              </>
             )}
           </div>
           <div class="p-6">
-            <h2 class="font-display text-2xl group-hover:text-[#8A684A]">{service.name}</h2>
+            <h2 class="font-display text-2xl group-hover:text-[#AF5A72]">{service.name}</h2>
             {service.shortDescription?.trim() && (
-              <p class="mt-2 text-sm leading-6 text-[#6D6259]">{service.shortDescription}</p>
+              <p class="mt-2 text-sm leading-6 text-[#49273C]">{service.shortDescription}</p>
             )}
-            <span class="mt-5 inline-block text-xs font-semibold uppercase tracking-wide text-[#8A684A]">
+            <span class="mt-5 inline-block text-xs font-semibold uppercase tracking-wide text-[#AF5A72]">
               Scopri il trattamento <span aria-hidden="true">→</span>
             </span>
           </div>

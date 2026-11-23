@@ -3,17 +3,17 @@
   <desc id="description">Anteprima grafica color avorio e sabbia per il video di presentazione dello studio.</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f2ece4"/>
-      <stop offset="1" stop-color="#b89778"/>
+      <stop offset="0" stop-color="#EFE9E8"/>
+      <stop offset="1" stop-color="#AF5A72"/>
     </linearGradient>
     <radialGradient id="glow" cx="70%" cy="28%" r="65%">
-      <stop offset="0" stop-color="#faf8f5" stop-opacity=".9"/>
-      <stop offset="1" stop-color="#faf8f5" stop-opacity="0"/>
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1280" height="720" fill="url(#background)"/>
   <rect width="1280" height="720" fill="url(#glow)"/>
-  <rect x="34" y="34" width="1212" height="652" rx="28" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/>
-  <text x="640" y="334" fill="#1f1d1b" font-family="Georgia,serif" font-size="68" letter-spacing="12" text-anchor="middle">MAR STUDIO</text>
-  <text x="640" y="392" fill="#51463e" font-family="Arial,sans-serif" font-size="22" letter-spacing="6" text-anchor="middle">BY MARYLIN CASÀ</text>
+  <rect x="34" y="34" width="1212" height="652" rx="28" fill="none" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="2"/>
+  <text x="640" y="334" fill="#292F3F" font-family="Georgia,serif" font-size="68" letter-spacing="12" text-anchor="middle">MAR STUDIO</text>
+  <text x="640" y="392" fill="#49273C" font-family="Arial,sans-serif" font-size="22" letter-spacing="6" text-anchor="middle">BY MARYLIN CASÀ</text>
 </svg>

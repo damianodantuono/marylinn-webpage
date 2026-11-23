@@ -2,6 +2,8 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+const videoSourceSchema = z.string().trim().optional();
+
 const studio = defineCollection({
   loader: glob({ base: "./src/content/studio", pattern: "*.json" }),
   schema: z.object({
@@ -42,7 +44,7 @@ const studio = defineCollection({
       imageAlt: z.string(),
       imageLabel: z.string(),
       image: z.string().optional(),
-      heroVideo: z.string().optional(),
+      heroVideo: videoSourceSchema,
       heroPoster: z.string().optional(),
     }),
     about: z.object({
@@ -71,7 +73,7 @@ const studio = defineCollection({
     ),
     media: z.object({
       studioVideo: z.object({
-        src: z.string().optional(),
+        src: videoSourceSchema,
         poster: z.string(),
         alt: z.string(),
       }),
@@ -130,7 +132,7 @@ const primaEDopo = defineCollection({
     description: z.string().optional(),
     beforeSrc: z.string().optional(),
     afterSrc: z.string().optional(),
-    videoSrc: z.string().optional(),
+    videoSrc: videoSourceSchema,
     poster: z.string().optional(),
     alt: z.string().optional(),
   }),

@@ -58,7 +58,9 @@ const aboutTitleLead = aboutTitleWords.join(" ");
       <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Dentro MAR STUDIO</p>
       <h2 id="video-title" class="mt-3 font-display text-4xl sm:text-5xl">Uno spazio pensato per prenderti cura di te.</h2>
       <p class="mt-4 text-sm leading-7 text-[#49273C]">
-        Il video di presentazione dello studio sarà disponibile qui. Nel frattempo, puoi scoprire la filosofia e i trattamenti.
+        {site.media.studioVideo.src
+          ? "Entra in MAR STUDIO e scopri lo spazio dedicato alla tua bellezza."
+          : "Il video di presentazione dello studio sarà disponibile qui. Nel frattempo, puoi scoprire la filosofia e i trattamenti."}
       </p>
     </div>
     <div class="mx-auto mt-8 max-w-5xl overflow-hidden rounded-3xl bg-[#EFE9E8]">
@@ -66,7 +68,7 @@ const aboutTitleLead = aboutTitleWords.join(" ");
         class="aspect-video w-full object-cover"
         controls
         playsinline
-        preload="none"
+        preload="metadata"
         poster={site.media.studioVideo.poster}
         aria-label={site.media.studioVideo.alt}
       >

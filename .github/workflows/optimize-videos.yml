@@ -1,0 +1,119 @@
+name: Optimize uploaded videos
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "public/images/uploads/*.mov"
+      - "public/images/uploads/**/*.mov"
+      - "public/images/uploads/*.mp4"
+      - "public/images/uploads/**/*.mp4"
+      - "public/images/uploads/*.webm"
+      - "public/images/uploads/**/*.webm"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+
+      - name: Convert and compress uploaded videos
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
+            mapfile -d '' -t changed_files < <(
+              git ls-tree -r --name-only -z "$GITHUB_SHA" -- public/images/uploads
+            )
+          else
+            mapfile -d '' -t changed_files < <(
+              git diff --name-only -z "$BEFORE_SHA" "$GITHUB_SHA" -- public/images/uploads
+            )
+          fi
+
+          replacements=()
+          temporary_file=""
+          trap '[[ -z "$temporary_file" ]] || rm -f -- "$temporary_file"' EXIT
+
+          for file in "${changed_files[@]}"; do
+            [[ -f "$file" ]] || continue
+
+            case "$file" in
+              *.mp4)
+                output="$file"
+                ;;
+              *.mov|*.webm)
+                output="${file%.*}.mp4"
+                if [[ -e "$output" ]]; then
+                  echo "::error::Non posso convertire '$file': esiste già '$output'."
+                  exit 1
+                fi
+                replacements+=("${file##*/}" "${output##*/}")
+                ;;
+              *)
+                continue
+                ;;
+            esac
+
+            temporary_file="$(mktemp --tmpdir="$(dirname "$output")" '.video-XXXXXX.mp4')"
+            ffmpeg -hide_banner -loglevel error -y -i "$file" \
+              -vf "scale='min(1280,iw)':-2" \
+              -c:v libx264 -crf 26 -pix_fmt yuv420p -an -movflags +faststart \
+              "$temporary_file"
+
+            file_size="$(stat -c '%s' "$temporary_file")"
+            if (( file_size >= 25000000 )); then
+              echo "::error::Il video ottimizzato '$file' supera i 25 MB ($file_size byte)."
+              exit 1
+            fi
+
+            mv -- "$temporary_file" "$output"
+            temporary_file=""
+
+            if [[ "$file" != "$output" ]]; then
+              rm -- "$file"
+            fi
+          done
+
+          if (( ${#replacements[@]} > 0 )); then
+            python3 - "${replacements[@]}" <<'PY'
+          from pathlib import Path
+          import sys
+
+          replacements = list(zip(sys.argv[1::2], sys.argv[2::2]))
+          for content_file in Path("src/content").rglob("*.json"):
+              original = content_file.read_text(encoding="utf-8")
+              updated = original
+              for old_name, new_name in replacements:
+                  updated = updated.replace(old_name, new_name)
+              if updated != original:
+                  content_file.write_text(updated, encoding="utf-8")
+          PY
+          fi
+
+      - name: Commit optimized videos
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- public/images/uploads src/content
+          if git diff --cached --quiet; then
+            echo "Nessun video da ottimizzare."
+            exit 0
+          fi
+          git commit -m "Optimize uploaded videos"
+          git push origin HEAD:main

@@ -65,7 +65,10 @@ content:
           - { name: imageAlt, label: Testo alternativo immagine, type: string }
           - { name: imageLabel, label: Etichetta immagine, type: string }
           - { name: image, label: Immagine copertina, type: image }
-          - { name: heroVideo, label: Video di copertina, type: file }
+          - name: heroVideo
+            label: Video di copertina
+            type: file
+            description: Carica un video breve di 5-15 secondi dal rullino (MP4, MOV o WebM). Verrà convertito automaticamente in MP4 ottimizzato.
           - { name: heroPoster, label: Poster del video, type: image }
       - name: about
         label: Presentazione
@@ -111,7 +114,10 @@ content:
             label: Presentazione video
             type: object
             fields:
-              - { name: src, label: URL video, type: string }
+              - name: src
+                label: Video dello studio
+                type: file
+                description: Carica un video breve di 5-15 secondi dal rullino (MP4, MOV o WebM). Verrà convertito automaticamente in MP4 ottimizzato.
               - { name: poster, label: Immagine di anteprima, type: image }
               - { name: alt, label: Testo alternativo, type: string }
       - name: conversion
@@ -200,7 +206,10 @@ content:
       - { name: description, label: Descrizione, type: text }
       - { name: beforeSrc, label: Foto prima, type: image }
       - { name: afterSrc, label: Foto dopo, type: image }
-      - { name: videoSrc, label: URL video, type: string }
+      - name: videoSrc
+        label: Video del risultato
+        type: file
+        description: Carica un video breve di 5-15 secondi dal rullino (MP4, MOV o WebM). Verrà convertito automaticamente in MP4 ottimizzato.
       - { name: poster, label: Copertina video, type: image }
       - { name: alt, label: Testo alternativo, type: string }
 

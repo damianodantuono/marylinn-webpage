@@ -42,6 +42,8 @@ const studio = defineCollection({
       imageAlt: z.string(),
       imageLabel: z.string(),
       image: z.string().optional(),
+      heroVideo: z.string().optional(),
+      heroPoster: z.string().optional(),
     }),
     about: z.object({
       eyebrow: z.string(),

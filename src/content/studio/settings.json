@@ -59,7 +59,9 @@
     "primaryAction": "Prenota una consulenza",
     "secondaryAction": "Scopri i trattamenti",
     "imageAlt": "Spazio dedicato ai trattamenti beauty di MAR STUDIO",
-    "imageLabel": "Il tuo momento, la tua bellezza"
+    "imageLabel": "Il tuo momento, la tua bellezza",
+    "heroVideo": "",
+    "heroPoster": ""
   },
   "about": {
     "eyebrow": "Marylin Casà ",

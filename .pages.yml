@@ -1,7 +1,7 @@
 media:
   input: public/images/uploads
   output: /images/uploads
-  extensions: [jpg, jpeg, png, webp, avif]
+  extensions: [jpg, jpeg, png, webp, avif, mp4, webm, mov]
   rename: safe
 
 content:
@@ -65,6 +65,8 @@ content:
           - { name: imageAlt, label: Testo alternativo immagine, type: string }
           - { name: imageLabel, label: Etichetta immagine, type: string }
           - { name: image, label: Immagine copertina, type: image }
+          - { name: heroVideo, label: Video di copertina, type: file }
+          - { name: heroPoster, label: Poster del video, type: image }
       - name: about
         label: Presentazione
         type: object

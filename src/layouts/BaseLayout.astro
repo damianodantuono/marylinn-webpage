@@ -41,12 +41,42 @@ const pageTitle =
     />
     <slot name="head" />
   </head>
-  <body class="min-h-screen bg-white font-sans text-[#292F3F] antialiased">
+  <body class="min-h-screen bg-[#EFE9E8] font-sans text-[#292F3F] antialiased">
     <Navbar />
     <main>
       <slot />
     </main>
     <Footer />
     <WhatsAppFloat message={whatsappMessage} />
+    <script>
+      const revealTargets = document.querySelectorAll<HTMLElement>(
+        "main > section, main article, main a.group",
+      );
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      if (revealTargets.length > 0 && !prefersReducedMotion && "IntersectionObserver" in window) {
+        document.documentElement.classList.add("motion-reveal-ready");
+
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              const element = entry.target as HTMLElement;
+              element.dataset.revealVisible = "true";
+              observer.unobserve(element);
+            });
+          },
+          { threshold: 0.12 },
+        );
+
+        revealTargets.forEach((element) => {
+          element.dataset.reveal = "";
+          revealObserver.observe(element);
+        });
+      }
+    </script>
   </body>
 </html>

@@ -7,6 +7,11 @@ import { getReviews, getStudio, getTreatments } from "@/lib/content";
 const site = await getStudio();
 const treatments = await getTreatments();
 const reviews = await getReviews();
+const heroVideo = site.hero.heroVideo?.trim();
+const heroPoster = site.hero.heroPoster?.trim() || site.hero.image?.trim() || site.media.studioVideo.poster;
+const heroTitleWords = site.hero.title.trim().split(/\s+/);
+const heroTitleEmphasis = heroTitleWords.pop() ?? "";
+const heroTitleLead = heroTitleWords.join(" ");
 ---
 
 <BaseLayout
@@ -14,50 +19,63 @@ const reviews = await getReviews();
   description={site.brand.description?.trim() || undefined}
   whatsappMessage="Ciao Marylin, vorrei prenotare una consulenza presso MAR STUDIO."
 >
-  <section class="relative overflow-hidden bg-[#292F3F] px-5 pb-14 pt-28 text-white sm:px-8 sm:pb-20 sm:pt-36">
-    <div class="mx-auto grid min-h-[76vh] max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
-      <div class="max-w-2xl">
+  <section class="relative isolate flex min-h-[100svh] overflow-hidden bg-[#292F3F] text-white" data-luxury-hero>
+    {heroVideo ? (
+      <video
+        class="absolute inset-0 h-full w-full object-cover"
+        src={heroVideo}
+        poster={heroPoster}
+        autoplay
+        loop
+        muted
+        playsinline
+        aria-hidden="true"
+      ></video>
+    ) : (
+      <img
+        class="ken-burns absolute inset-0 h-full w-full object-cover"
+        src={heroPoster}
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+      />
+    )}
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-[#292F3F]/85 via-[#49273C]/45 to-[#292F3F]/60"
+      aria-hidden="true"
+    ></div>
+    <div class="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-7xl items-end px-5 pb-24 pt-40 sm:px-8 md:pb-32">
+      <div class="max-w-4xl">
         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#B7C3DB]">
           {site.hero.eyebrow}
         </p>
-        <h1 class="mt-5 font-display text-5xl leading-[0.98] sm:text-7xl">
-          {site.hero.title}
+        <h1 class="mt-6 max-w-4xl font-display text-6xl leading-[0.9] sm:text-7xl md:text-8xl">
+          {heroTitleLead && <>{heroTitleLead} </>}
+          <em class="font-normal">{heroTitleEmphasis}</em>
         </h1>
         {site.hero.description?.trim() && (
-          <p class="mt-6 max-w-xl text-base leading-8 text-white/75 sm:text-lg">
+          <p class="mt-7 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
             {site.hero.description}
           </p>
         )}
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-9 flex flex-wrap gap-3">
           <a
-            class="rounded-full bg-[#AF5A72] px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#49273C]"
+            class="rounded-full bg-[#AF5A72] px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:bg-[#49273C]"
             href="/contatti"
           >
             {site.hero.primaryAction}
           </a>
           <a
-            class="rounded-full border border-white/35 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            class="rounded-full border border-white/40 px-7 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:bg-white/10"
             href="/trattamenti"
           >
             {site.hero.secondaryAction}
           </a>
         </div>
-      </div>
-
-      <div
-        class="relative flex min-h-[360px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#F9D6E3_0%,transparent_38%),linear-gradient(145deg,#B7C3DB_0%,#EFE9E8_48%,#AF5A72_100%)] p-7 sm:min-h-[500px] sm:p-10"
-        role="img"
-        aria-label={site.hero.imageAlt}
-      >
-        {site.hero.image && <img class="absolute inset-0 h-full w-full object-cover" src={site.hero.image} alt={site.hero.imageAlt} />}
-        <div class="absolute inset-5 rounded-[1.5rem] border border-white/50"></div>
-        <div class="relative max-w-xs rounded-2xl bg-white/90 p-5 text-[#49273C] backdrop-blur-sm">
-          <p class="font-display text-2xl">{site.hero.imageLabel}</p>
-          {!site.hero.image && (
-            <p class="mt-2 text-xs leading-5 text-[#49273C]/80">
-              Uno spazio visivo pronto ad accogliere le fotografie originali dello studio.
-            </p>
-          )}
+        <div class="mt-10 flex items-center gap-4 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white/65">
+          <span>{site.contact.address.locality || "Imola"}</span>
+          <span class="h-px w-8 bg-[#F9D6E3]/60" aria-hidden="true"></span>
+          <span>Beauty · Dermopigmentazione · Academy</span>
         </div>
       </div>
     </div>
@@ -65,10 +83,10 @@ const reviews = await getReviews();
 
   <AnimatedStats />
 
-  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="treatments-title">
+  <section class="mx-auto max-w-7xl px-5 py-24 sm:px-8 md:py-32" aria-labelledby="treatments-title">
     <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
       <div class="max-w-2xl">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Trattamenti</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Trattamenti</p>
         <h2 id="treatments-title" class="mt-3 font-display text-4xl sm:text-5xl">
           Piccoli gesti, scelti per te.
         </h2>
@@ -87,21 +105,30 @@ const reviews = await getReviews();
             class:list={[
               "relative flex aspect-[1.65] items-end p-5",
               index % 3 === 0
-                ? "bg-[linear-gradient(140deg,#EFE9E8,#B7C3DB)]"
+                ? "bg-[linear-gradient(145deg,#F8F3EF_0%,#EFE9E8_60%,#D9C3B9_100%)]"
                 : index % 3 === 1
-                  ? "bg-[linear-gradient(140deg,#B7C3DB,#B7C3DB)]"
-                  : "bg-[linear-gradient(140deg,#F9D6E3,#AF5A72)]",
+                  ? "bg-[linear-gradient(145deg,#F9F5F1_0%,#EFE9E8_100%)]"
+                  : "bg-[linear-gradient(145deg,#F5E7E1_0%,#AF5A72_100%)]",
             ]}
             role="img"
             aria-label={service.imageAlt?.trim() || service.name}
           >
-            <img
-              class="pointer-events-none absolute right-4 top-4 h-10 w-auto opacity-50"
-              src="/images/brand/monogramma.png"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-            />
+            {service.image ? (
+              <img
+                class="absolute inset-0 h-full w-full object-cover"
+                src={service.image}
+                alt={service.imageAlt?.trim() || service.name}
+                loading="lazy"
+              />
+            ) : (
+              <img
+                class="pointer-events-none absolute right-4 top-4 h-10 w-auto opacity-50"
+                src="/images/brand/monogramma.png"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+            )}
             <span class="rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs text-[#49273C]">
               {service.placeholderLabel?.trim() || service.name}
             </span>
@@ -120,22 +147,25 @@ const reviews = await getReviews();
     </div>
   </section>
 
-  <section class="bg-[#EFE9E8] px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="about-title">
+  <section class="bg-[#EFE9E8] px-5 py-24 sm:px-8 md:py-32" aria-labelledby="about-title">
     <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
       <div
-        class="relative flex min-h-[300px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_60%_30%,#B7C3DB_0%,transparent_42%),linear-gradient(145deg,#B7C3DB,#EFE9E8)] p-7"
+        class="relative flex min-h-[300px] items-end overflow-hidden rounded-t-full rounded-b-2xl bg-[radial-gradient(ellipse_at_60%_30%,#F9D6E3_0%,transparent_42%),linear-gradient(145deg,#F9F5F1,#EFE9E8)] p-7"
         role="img"
         aria-label="Spazio per un ritratto professionale di Marylin Casà"
       >
         {site.about.image && <img class="absolute inset-0 h-full w-full object-cover" src={site.about.image} alt="Ritratto professionale di Marylin Casà" loading="lazy" />}
         {!site.about.image && (
-          <p class="relative rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs text-[#49273C]">
-            Uno spazio per il ritratto di Marylin
-          </p>
+          <div class="relative mx-auto flex flex-col items-center text-center">
+            <img class="w-28 opacity-70" src="/images/brand/monogramma.png" alt="" aria-hidden="true" loading="lazy" />
+            <p class="mt-5 rounded-full border border-white/60 bg-white/75 px-4 py-2 text-xs text-[#49273C]">
+              Ritratto di Marylin · in arrivo
+            </p>
+          </div>
         )}
       </div>
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">{site.about.eyebrow}</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">{site.about.eyebrow}</p>
         <h2 id="about-title" class="mt-3 font-display text-4xl sm:text-5xl">{site.about.title}</h2>
         {site.about.paragraphs?.[0]?.trim() && (
           <p class="mt-5 text-sm leading-7 text-[#49273C]">{site.about.paragraphs[0]}</p>
@@ -150,10 +180,10 @@ const reviews = await getReviews();
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="results-title">
+  <section class="mx-auto max-w-7xl px-5 py-24 sm:px-8 md:py-32" aria-labelledby="results-title">
     <div class="grid gap-8 md:grid-cols-2 md:items-center">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Risultati</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Risultati</p>
         <h2 id="results-title" class="mt-3 font-display text-4xl sm:text-5xl">La bellezza dei dettagli, nel tempo.</h2>
         <p class="mt-5 max-w-xl text-sm leading-7 text-[#49273C]">
           Una galleria di lavori reali sarà pubblicata con descrizioni accurate e il consenso delle persone ritratte.
@@ -164,14 +194,14 @@ const reviews = await getReviews();
       </div>
       <div class="grid grid-cols-2 gap-3">
         <div
-          class="flex aspect-[0.85] items-end rounded-3xl bg-[linear-gradient(145deg,#B7C3DB,#EFE9E8)] p-4"
+          class="flex aspect-[0.85] items-end rounded-3xl bg-[linear-gradient(145deg,#F9F5F1,#EFE9E8)] p-4"
           role="img"
           aria-label={site.mediaPlaceholders[1].alt}
         >
           <span class="rounded-full bg-[#FFFFFF]/85 px-3 py-2 text-xs">Prima</span>
         </div>
         <div
-          class="mt-8 flex aspect-[0.85] items-end rounded-3xl bg-[linear-gradient(145deg,#AF5A72,#F9D6E3)] p-4"
+          class="mt-8 flex aspect-[0.85] items-end rounded-3xl bg-[linear-gradient(145deg,#49273C,#AF5A72)] p-4"
           role="img"
           aria-label={site.mediaPlaceholders[1].alt}
         >
@@ -181,9 +211,9 @@ const reviews = await getReviews();
     </div>
   </section>
 
-  <section class="bg-[#EFE9E8] px-5 py-14 sm:px-8 sm:py-20" aria-labelledby="reviews-title">
+  <section class="bg-[#EFE9E8] px-5 py-24 sm:px-8 md:py-32" aria-labelledby="reviews-title">
     <div class="mx-auto max-w-3xl text-center">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Esperienze</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Esperienze</p>
       <h2 id="reviews-title" class="mt-3 font-display text-4xl">Ogni percorso parte dall'ascolto.</h2>
       {reviews.length > 0 ? (
         <div class="mt-8 grid gap-4 text-left sm:grid-cols-2">
@@ -214,10 +244,10 @@ const reviews = await getReviews();
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="location-title">
+  <section class="mx-auto max-w-7xl px-5 py-24 sm:px-8 md:py-32" aria-labelledby="location-title">
     <div class="grid gap-8 rounded-[2rem] border border-[#292F3F]/10 bg-white/60 p-7 sm:p-10 md:grid-cols-[1fr_1fr] md:items-center">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Dove siamo</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Dove siamo</p>
         <h2 id="location-title" class="mt-3 font-display text-4xl">Ti aspettiamo in studio.</h2>
         {site.contact.address.street || site.contact.address.locality ? (
           <p class="mt-4 text-sm leading-7 text-[#49273C]">

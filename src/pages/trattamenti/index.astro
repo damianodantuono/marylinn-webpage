@@ -10,26 +10,28 @@ const treatments = await getTreatments();
   title="Trattamenti beauty e dermopigmentazione"
   description="Scopri i trattamenti di dermopigmentazione, microblading, laminazione, lentiggini, piercing e gemme dentali di MAR STUDIO."
 >
-  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
-    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Il catalogo</p>
-    <h1 class="mt-3 max-w-3xl font-display text-5xl leading-tight sm:text-6xl">Trattamenti pensati intorno a te.</h1>
+  <section class="mx-auto max-w-7xl px-5 py-24 sm:px-8 md:py-32">
+    <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Il catalogo</p>
+    <h1 class="mt-3 max-w-3xl font-display text-5xl leading-tight sm:text-6xl">
+      Trattamenti pensati <em class="font-normal">intorno a te.</em>
+    </h1>
     <p class="mt-5 max-w-2xl text-base leading-8 text-[#49273C]">
       Ogni percorso comincia dal dialogo. Scopri i servizi, le modalità e le domande più frequenti; durante la consulenza valuteremo insieme il trattamento più adatto alle tue esigenze.
     </p>
     <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {treatments.map((service, index) => (
         <a
-          class="group overflow-hidden rounded-3xl border border-[#292F3F]/10 bg-white/60 transition-transform hover:-translate-y-1"
+          class="group overflow-hidden rounded-3xl border border-[#AF5A72]/25 bg-white/60 transition-transform hover:-translate-y-1"
           href={`/trattamenti/${service.slug}`}
         >
           <div
             class:list={[
               "relative flex aspect-[1.5] items-end overflow-hidden p-5",
               index % 3 === 0
-                ? "bg-[linear-gradient(140deg,#EFE9E8,#B7C3DB)]"
+                ? "bg-[linear-gradient(145deg,#F8F3EF_0%,#EFE9E8_60%,#D9C3B9_100%)]"
                 : index % 3 === 1
-                  ? "bg-[linear-gradient(140deg,#B7C3DB,#B7C3DB)]"
-                  : "bg-[linear-gradient(140deg,#F9D6E3,#AF5A72)]",
+                  ? "bg-[linear-gradient(145deg,#F9F5F1_0%,#EFE9E8_100%)]"
+                  : "bg-[linear-gradient(145deg,#F5E7E1_0%,#AF5A72_100%)]",
             ]}
             role="img"
             aria-label={service.imageAlt?.trim() || service.name}

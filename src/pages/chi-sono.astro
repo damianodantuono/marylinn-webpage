@@ -4,33 +4,45 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getStudio } from "@/lib/content";
 
 const site = await getStudio();
+const aboutTitleWords = site.about.title.trim().split(/\s+/);
+const aboutTitleEmphasis = aboutTitleWords.splice(-2).join(" ");
+const aboutTitleLead = aboutTitleWords.join(" ");
 ---
 
 <BaseLayout
   title="Chi sono"
   description="Scopri la filosofia di Marylin Casà e l'approccio personalizzato di MAR STUDIO."
 >
-  <section class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+  <section class="mx-auto grid max-w-7xl gap-10 px-5 py-24 sm:px-8 md:py-32 lg:grid-cols-[1fr_0.9fr] lg:items-center">
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">{site.about.eyebrow}</p>
-      <h1 class="mt-4 font-display text-5xl leading-tight sm:text-6xl">{site.about.title}</h1>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">{site.about.eyebrow}</p>
+      <h1 class="mt-4 font-display text-5xl leading-tight sm:text-6xl">
+        {aboutTitleLead} <em class="font-normal">{aboutTitleEmphasis}</em>
+      </h1>
       {site.about.paragraphs?.filter((paragraph) => paragraph.trim()).map((paragraph) => (
         <p class="mt-5 max-w-2xl text-sm leading-7 text-[#49273C]">{paragraph}</p>
       ))}
     </div>
     <div
-      class="relative flex min-h-[420px] items-end overflow-hidden rounded-[2rem] bg-[radial-gradient(ellipse_at_68%_24%,#F9D6E3_0%,transparent_38%),linear-gradient(145deg,#EFE9E8_0%,#EFE9E8_48%,#AF5A72_100%)] p-7 sm:p-10"
+      class="relative flex min-h-[420px] items-end overflow-hidden rounded-t-full rounded-b-2xl bg-[radial-gradient(ellipse_at_68%_24%,#F9D6E3_0%,transparent_38%),linear-gradient(145deg,#F9F5F1_0%,#EFE9E8_56%,#D9C3B9_100%)] p-7 sm:p-10"
       role="img"
       aria-label="Spazio per una fotografia professionale di Marylin Casà"
     >
       {site.about.image && <img class="absolute inset-0 h-full w-full object-cover" src={site.about.image} alt="Ritratto professionale di Marylin Casà" loading="lazy" />}
-      {!site.about.image && <p class="rounded-full bg-[#FFFFFF]/85 px-4 py-2 text-xs text-[#49273C]">Ritratto di Marylin, in arrivo</p>}
+      {!site.about.image && (
+        <div class="relative mx-auto flex flex-col items-center text-center">
+          <img class="w-32 opacity-70" src="/images/brand/monogramma.png" alt="" aria-hidden="true" loading="lazy" />
+          <p class="mt-5 rounded-full border border-white/60 bg-white/75 px-4 py-2 text-xs text-[#49273C]">
+            Ritratto di Marylin · in arrivo
+          </p>
+        </div>
+      )}
     </div>
   </section>
 
-  <section class="bg-[#EFE9E8] px-5 py-16 sm:px-8 sm:py-20" aria-labelledby="philosophy-title">
+  <section class="bg-[#EFE9E8] px-5 py-24 sm:px-8 md:py-32" aria-labelledby="philosophy-title">
     <div class="mx-auto max-w-4xl text-center">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">La filosofia dello studio</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">La filosofia dello studio</p>
       <h2 id="philosophy-title" class="mt-3 font-display text-4xl sm:text-5xl">
         Un risultato bello è prima di tutto un risultato tuo.
       </h2>
@@ -41,9 +53,9 @@ const site = await getStudio();
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20" aria-labelledby="video-title">
+  <section class="mx-auto max-w-7xl px-5 py-24 sm:px-8 md:py-32" aria-labelledby="video-title">
     <div class="mx-auto max-w-3xl text-center">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Dentro MAR STUDIO</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Dentro MAR STUDIO</p>
       <h2 id="video-title" class="mt-3 font-display text-4xl sm:text-5xl">Uno spazio pensato per prenderti cura di te.</h2>
       <p class="mt-4 text-sm leading-7 text-[#49273C]">
         Il video di presentazione dello studio sarà disponibile qui. Nel frattempo, puoi scoprire la filosofia e i trattamenti.
@@ -64,9 +76,9 @@ const site = await getStudio();
     </div>
   </section>
 
-  <section class="bg-[#EFE9E8] px-5 py-16 sm:px-8 sm:py-20" aria-labelledby="awards-title">
+  <section class="bg-[#EFE9E8] px-5 py-24 sm:px-8 md:py-32" aria-labelledby="awards-title">
     <div class="mx-auto max-w-7xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#AF5A72]">Percorso e riconoscimenti</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#AF5A72]">Percorso e riconoscimenti</p>
       <h2 id="awards-title" class="mt-3 font-display text-4xl sm:text-5xl">Formazione e crescita continua.</h2>
       <p class="mt-4 max-w-2xl text-sm leading-7 text-[#49273C]">
         Le fotografie delle competizioni e gli eventuali riconoscimenti saranno inseriti dopo aver verificato e selezionato i materiali.
@@ -77,8 +89,8 @@ const site = await getStudio();
             class:list={[
               "flex aspect-[1.25] items-end rounded-3xl p-5",
               index % 2 === 0
-                ? "bg-[linear-gradient(145deg,#EFE9E8,#B7C3DB)]"
-                : "bg-[linear-gradient(145deg,#B7C3DB,#B7C3DB)]",
+                ? "bg-[linear-gradient(145deg,#F8F3EF_0%,#EFE9E8_100%)]"
+                : "bg-[linear-gradient(145deg,#F9F5F1_0%,#EFE9E8_100%)]",
             ]}
             role="img"
             aria-label={`Spazio per fotografie originali: ${label}`}

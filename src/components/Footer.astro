@@ -12,7 +12,9 @@ const whatsappUrl = getWhatsAppUrl(site);
         {site.brand.name}
       </a>
       <p class="mt-1 text-xs tracking-[0.18em] text-[#C5A880]">BY MARYLIN CASÀ</p>
-      <p class="mt-5 max-w-sm text-sm leading-7 text-white/65">{site.footer.note}</p>
+      {site.footer.note?.trim() && (
+        <p class="mt-5 max-w-sm text-sm leading-7 text-white/65">{site.footer.note}</p>
+      )}
     </div>
 
     <div>

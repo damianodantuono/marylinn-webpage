@@ -39,28 +39,44 @@ const courses = await getCourses();
       <div class="mt-8 grid gap-5 lg:grid-cols-2">
         {courses.map((course) => (
           <article class="rounded-3xl bg-[#FAF8F5] p-6 sm:p-8">
-            <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A684A]">{course.status}</p>
+            {course.status?.trim() && (
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[#8A684A]">{course.status}</p>
+            )}
             <h3 class="mt-3 font-display text-3xl">{course.title}</h3>
-            <p class="mt-3 text-sm leading-7 text-[#625850]">{course.description}</p>
-            <dl class="mt-6 grid gap-4 border-y border-[#1F1D1B]/10 py-5 sm:grid-cols-2">
-              <div>
-                <dt class="text-xs font-semibold uppercase tracking-wide text-[#76695F]">A chi è rivolto</dt>
-                <dd class="mt-2 text-sm leading-6 text-[#49433E]">{course.audience}</dd>
-              </div>
-              <div>
-                <dt class="text-xs font-semibold uppercase tracking-wide text-[#76695F]">Durata</dt>
-                <dd class="mt-2 text-sm leading-6 text-[#49433E]">{course.duration}</dd>
-              </div>
-            </dl>
-            <h4 class="mt-5 text-sm font-semibold">Programma indicativo</h4>
-            <ul class="mt-3 space-y-2">
-              {course.programme.map((topic) => (
+            {course.description?.trim() && (
+              <p class="mt-3 text-sm leading-7 text-[#625850]">{course.description}</p>
+            )}
+            {(course.audience?.trim() || course.duration?.trim()) && (
+              <dl class="mt-6 grid gap-4 border-y border-[#1F1D1B]/10 py-5 sm:grid-cols-2">
+                {course.audience?.trim() && (
+                  <div>
+                    <dt class="text-xs font-semibold uppercase tracking-wide text-[#76695F]">A chi è rivolto</dt>
+                    <dd class="mt-2 text-sm leading-6 text-[#49433E]">{course.audience}</dd>
+                  </div>
+                )}
+                {course.duration?.trim() && (
+                  <div>
+                    <dt class="text-xs font-semibold uppercase tracking-wide text-[#76695F]">Durata</dt>
+                    <dd class="mt-2 text-sm leading-6 text-[#49433E]">{course.duration}</dd>
+                  </div>
+                )}
+              </dl>
+            )}
+            {course.programme?.some((topic) => topic.trim()) && (
+              <>
+                <h4 class="mt-5 text-sm font-semibold">Programma indicativo</h4>
+                <ul class="mt-3 space-y-2">
+              {course.programme.filter((topic) => topic.trim()).map((topic) => (
                 <li class="flex gap-2 text-sm leading-6 text-[#625850]">
                   <span class="text-[#9A744E]" aria-hidden="true">·</span><span>{topic}</span>
                 </li>
               ))}
-            </ul>
-            <p class="mt-5 text-xs leading-6 text-[#76695F]"><strong>Kit e materiali:</strong> {course.kit}</p>
+                </ul>
+              </>
+            )}
+            {course.kit?.trim() && (
+              <p class="mt-5 text-xs leading-6 text-[#76695F]"><strong>Kit e materiali:</strong> {course.kit}</p>
+            )}
             <a
               class="mt-6 inline-flex rounded-full border border-[#1F1D1B]/20 px-5 py-3 text-sm font-semibold transition-colors hover:bg-[#F2ECE4]"
               href={`/contatti?corso=${course.slug}`}

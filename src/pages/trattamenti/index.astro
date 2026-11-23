@@ -32,17 +32,19 @@ const treatments = await getTreatments();
                   : "bg-[linear-gradient(140deg,#E9D7D1,#C79D8F)]",
             ]}
             role="img"
-            aria-label={service.imageAlt}
+            aria-label={service.imageAlt?.trim() || service.name}
           >
             {service.image ? (
-              <img class="absolute inset-0 h-full w-full object-cover" src={service.image} alt={service.imageAlt} loading="lazy" />
+              <img class="absolute inset-0 h-full w-full object-cover" src={service.image} alt={service.imageAlt?.trim() || service.name} loading="lazy" />
             ) : (
-              <span class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">{service.placeholderLabel}</span>
+              <span class="relative rounded-full bg-[#FAF8F5]/85 px-4 py-2 text-xs">{service.placeholderLabel?.trim() || service.name}</span>
             )}
           </div>
           <div class="p-6">
             <h2 class="font-display text-2xl group-hover:text-[#8A684A]">{service.name}</h2>
-            <p class="mt-2 text-sm leading-6 text-[#6D6259]">{service.shortDescription}</p>
+            {service.shortDescription?.trim() && (
+              <p class="mt-2 text-sm leading-6 text-[#6D6259]">{service.shortDescription}</p>
+            )}
             <span class="mt-5 inline-block text-xs font-semibold uppercase tracking-wide text-[#8A684A]">
               Scopri il trattamento <span aria-hidden="true">→</span>
             </span>

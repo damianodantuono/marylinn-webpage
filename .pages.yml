@@ -177,6 +177,7 @@ content:
       - name: category
         label: Trattamento
         type: select
+        required: true
         options:
           values:
             - { label: PMU, name: pmu }
@@ -188,6 +189,7 @@ content:
       - name: format
         label: Formato
         type: select
+        required: true
         options:
           values:
             - { label: Foto, name: photo }

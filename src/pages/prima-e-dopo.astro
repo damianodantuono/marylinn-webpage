@@ -33,7 +33,7 @@ const gallery = await getGallery();
           data-gallery-filter={service.slug}
           aria-pressed="false"
         >
-          {service.navLabel}
+          {service.navLabel?.trim() || service.name}
         </button>
       ))}
     </div>
@@ -49,7 +49,7 @@ const gallery = await getGallery();
                 playsinline
                 preload="none"
                 poster={item.poster}
-                aria-label={item.alt}
+                aria-label={item.alt?.trim() || item.title?.trim() || `Risultato ${item.category}`}
               >
                 <source src={item.videoSrc} type="video/mp4" />
                 Il tuo browser non supporta la riproduzione video.
@@ -58,9 +58,9 @@ const gallery = await getGallery();
               <div
                 class="relative flex aspect-[1.2] items-end overflow-hidden bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)]"
                 role="img"
-                aria-label={item.alt}
+                aria-label={item.alt?.trim() || item.title?.trim() || `Risultato ${item.category}`}
               >
-                {item.poster && <img class="absolute inset-0 h-full w-full object-cover" src={item.poster} alt={item.alt} loading="lazy" />}
+                {item.poster && <img class="absolute inset-0 h-full w-full object-cover" src={item.poster} alt={item.alt?.trim() || item.title?.trim() || `Risultato ${item.category}`} loading="lazy" />}
                 <span class="relative m-4 rounded-full bg-[#FAF8F5]/90 px-4 py-2 text-xs">
                   Video in aggiornamento
                 </span>
@@ -69,7 +69,7 @@ const gallery = await getGallery();
           ) : (
             <div class="grid aspect-[1.2] grid-cols-2 gap-1 bg-[#FAF8F5]">
               {item.beforeSrc ? (
-                <img class="h-full w-full object-cover" src={item.beforeSrc} alt={`${item.alt} — prima`} loading="lazy" />
+                <img class="h-full w-full object-cover" src={item.beforeSrc} alt={`${item.alt?.trim() || item.title?.trim() || `Risultato ${item.category}`} — prima`} loading="lazy" />
               ) : (
                 <div
                   class:list={[
@@ -77,13 +77,13 @@ const gallery = await getGallery();
                     index % 2 === 0 ? "bg-[linear-gradient(145deg,#E7D7C8,#C7A98C)]" : "bg-[linear-gradient(145deg,#E8E2D9,#B6A89A)]",
                   ]}
                   role="img"
-                  aria-label={`${item.alt} — prima, immagine in aggiornamento`}
+                  aria-label={`${item.alt?.trim() || item.title?.trim() || `Risultato ${item.category}`} — prima, immagine in aggiornamento`}
                 >
                   <span class="rounded-full bg-[#FAF8F5]/85 px-3 py-1.5 text-xs">Prima</span>
                 </div>
               )}
               {item.afterSrc ? (
-                <img class="h-full w-full object-cover" src={item.afterSrc} alt={`${item.alt} — dopo`} loading="lazy" />
+                <img class="h-full w-full object-cover" src={item.afterSrc} alt={`${item.alt?.trim() || item.title?.trim() || `Risultato ${item.category}`} — dopo`} loading="lazy" />
               ) : (
                 <div
                   class:list={[
@@ -91,17 +91,17 @@ const gallery = await getGallery();
                     index % 2 === 0 ? "bg-[linear-gradient(145deg,#D8C6B4,#B89778)]" : "bg-[linear-gradient(145deg,#D9C5B2,#C5A880)]",
                   ]}
                   role="img"
-                  aria-label={`${item.alt} — dopo, immagine in aggiornamento`}
+                  aria-label={`${item.alt?.trim() || item.title?.trim() || `Risultato ${item.category}`} — dopo, immagine in aggiornamento`}
                 >
                   <span class="rounded-full bg-[#FAF8F5]/85 px-3 py-1.5 text-xs">Dopo</span>
                 </div>
               )}
             </div>
           )}
-          <div class="p-5">
-            <h2 class="font-display text-2xl">{item.title}</h2>
-            <p class="mt-2 text-xs leading-5 text-[#6D6259]">{item.description}</p>
-          </div>
+          {(item.title?.trim() || item.description?.trim()) && <div class="p-5">
+            {item.title?.trim() && <h2 class="font-display text-2xl">{item.title}</h2>}
+            {item.description?.trim() && <p class="mt-2 text-xs leading-5 text-[#6D6259]">{item.description}</p>}
+          </div>}
         </article>
       ))}
     </div>

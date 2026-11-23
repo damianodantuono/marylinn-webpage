@@ -14,7 +14,7 @@ const site = await getStudio();
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A684A]">{site.about.eyebrow}</p>
       <h1 class="mt-4 font-display text-5xl leading-tight sm:text-6xl">{site.about.title}</h1>
-      {site.about.paragraphs.map((paragraph) => (
+      {site.about.paragraphs?.filter((paragraph) => paragraph.trim()).map((paragraph) => (
         <p class="mt-5 max-w-2xl text-sm leading-7 text-[#625850]">{paragraph}</p>
       ))}
     </div>

@@ -15,7 +15,7 @@ type Props = {
 
 const {
   title = site.brand.displayName,
-  description = site.brand.description,
+  description = site.brand.description?.trim() || undefined,
   whatsappMessage,
 } = Astro.props;
 const pageTitle =
@@ -27,7 +27,7 @@ const pageTitle =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
+    {description?.trim() && <meta name="description" content={description} />}
     <meta name="theme-color" content="#FAF8F5" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>

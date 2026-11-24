@@ -1,5 +1,6 @@
 {
   "slug": "piercing",
+  "order": 9,
   "name": "Piercing",
   "navLabel": "Piercing",
   "shortDescription": "Un servizio attento alla scelta del gioiello, alla consulenza e alle procedure di igiene.",
@@ -25,7 +26,5 @@
     }
   ],
   "imageAlt": "Esempio illustrativo di servizio piercing",
-  "placeholderLabel": "Piercing",
-  "order": 5,
-  "image": ""
+  "placeholderLabel": "Piercing"
 }

@@ -1,6 +1,7 @@
 {
-  "slug": "lentiggini",
-  "name": "Lentiggini semipermanenti",
+  "slug": "Lentiggini",
+  "order": 3,
+  "name": "Lentiggini",
   "navLabel": "Lentiggini",
   "shortDescription": "Un dettaglio delicato ispirato alle lentiggini naturali, progettato sul tuo viso.",
   "description": "Le lentiggini semipermanenti aggiungono al viso un dettaglio leggero e personalizzato. Posizione, quantità e intensità vengono concordate in consulenza, così da rispettare i tuoi lineamenti e mantenere un effetto armonioso.",
@@ -25,7 +26,5 @@
     }
   ],
   "imageAlt": "Esempio illustrativo di lentiggini semipermanenti",
-  "placeholderLabel": "Lentiggini",
-  "order": 3,
-  "image": ""
+  "placeholderLabel": "Lentiggini"
 }

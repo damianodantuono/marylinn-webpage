@@ -1,5 +1,6 @@
 {
   "slug": "needling",
+  "order": 7,
   "name": "needling",
   "navLabel": "needling",
   "shortDescription": "abc",

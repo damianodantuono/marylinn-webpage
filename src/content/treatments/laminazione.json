@@ -1,5 +1,6 @@
 {
   "slug": "laminazione",
+  "order": 6,
   "name": "Laminazione ciglia e sopracciglia",
   "navLabel": "Laminazione",
   "shortDescription": "Un trattamento dedicato a ordinare e valorizzare lo sguardo rispettando la tua forma naturale.",
@@ -25,7 +26,5 @@
     }
   ],
   "imageAlt": "Esempio illustrativo di laminazione ciglia e sopracciglia",
-  "placeholderLabel": "Laminazione",
-  "order": 4,
-  "image": ""
+  "placeholderLabel": "Laminazione"
 }

@@ -1,5 +1,6 @@
 {
   "slug": "gemme-dentali",
+  "order": 8,
   "name": "Gemme dentali",
   "navLabel": "Gemme dentali",
   "shortDescription": "Un piccolo dettaglio decorativo per il sorriso, preceduto da un confronto sulla fattibilità.",
@@ -25,7 +26,5 @@
     }
   ],
   "imageAlt": "Esempio illustrativo di gemma dentale",
-  "placeholderLabel": "Gemme dentali",
-  "order": 6,
-  "image": ""
+  "placeholderLabel": "Gemme dentali"
 }

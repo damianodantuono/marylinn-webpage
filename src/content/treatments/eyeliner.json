@@ -1,6 +1,7 @@
 {
-  "slug": "eyeliner",
+  "slug": "Eyeliner",
   "order": 4,
-  "name": "eyeliner",
+  "name": "Eyeliner",
+  "navLabel": "Eyeliner",
   "shortDescription": "abc"
 }
